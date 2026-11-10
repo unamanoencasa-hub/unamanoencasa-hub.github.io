@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07516a">
+<meta name="description" content="Una mano en casa: ayuda cotidiana, recados y acompañamiento en Elche, Crevillente, Aspe y pedanías.">
+<title>Una mano en casa | Tu apoyo en el día a día</title>
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--navy:#07516a;--teal:#078b72;--green:#dff0d4;--blue:#e5f5fc;--cream:#fffdf7;--ink:#164b60;--muted:#557583;--white:#fff;--shadow:0 14px 40px rgba(7,81,106,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}a{color:inherit}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(255,253,247,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e4eee9}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:1.18rem;line-height:1.05;color:var(--navy)}.brand small{display:block;color:var(--teal);font-weight:700;font-size:.78rem;margin-top:5px}.logo{width:110px;height:68px;display:block;object-fit:contain;flex:0 0 auto;border-radius:0;background:transparent}.navlinks{display:flex;align-items:center;gap:22px}.navlinks a{text-decoration:none;font-weight:700;font-size:.92rem}.navlinks a:hover{color:var(--teal)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;border-radius:999px;background:var(--teal);color:white;text-decoration:none;font-weight:800;border:0;box-shadow:0 6px 18px #078b722b;transition:transform .15s,background .15s}.btn:hover{transform:translateY(-2px);background:#06755f}.btn.secondary{background:var(--navy);box-shadow:0 6px 18px #07516a22}.menu{display:none;border:0;background:#e6f3ef;color:var(--navy);font-size:1.4rem;border-radius:12px;padding:8px 12px}
+.hero{padding:72px 0 58px;overflow:hidden;background:radial-gradient(ellipse at 85% 25%,#d9eee0 0,transparent 36%),linear-gradient(135deg,#fffdf7,#f0f9fb)}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:42px}.eyebrow{display:inline-block;background:#e1f2e8;color:#08785f;border-radius:999px;padding:7px 13px;font-size:.82rem;font-weight:850;letter-spacing:.04em}.hero h1{font-size:clamp(2.5rem,5.5vw,4.6rem);line-height:1.02;letter-spacing:-.045em;color:var(--navy);margin:20px 0}.hero h1 em{font-style:normal;color:var(--teal)}.hero p{font-size:1.13rem;color:#426a79;max-width:570px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.hero-note{display:flex;align-items:center;gap:9px;margin-top:22px;font-size:.92rem;color:var(--muted)}.hero-art{position:relative;isolation:isolate;min-height:365px;border-radius:35px;background:linear-gradient(150deg,#e2f3f8,#f0f7e9);box-shadow:var(--shadow);display:grid;place-items:center;overflow:hidden}.hero-photo{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center 17%;opacity:.88;mask-image:radial-gradient(ellipse 88% 86% at center,#000 48%,transparent 100%)}.hero-art:before,.hero-art:after{content:"";position:absolute;z-index:1;border-radius:50%;background:#ffffff65}.hero-art:before{width:260px;height:260px;top:-75px;right:-55px}.hero-art:after{width:170px;height:170px;bottom:-70px;left:-40px}.hands{font-size:8.5rem;z-index:1;filter:drop-shadow(0 10px 8px #07516a18)}.art-card{position:absolute;z-index:2;background:#ffffffed;padding:14px 17px;border-radius:18px;box-shadow:var(--shadow);font-weight:800}.art-card span{display:block;color:var(--teal);font-size:.83rem;font-weight:650}.art-card.one{left:18px;bottom:35px}.art-card.two{right:18px;top:30px}
+section{padding:72px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 36px}.section-head .eyebrow{margin-bottom:8px}.section-head h2{font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.03em;color:var(--navy);line-height:1.1;margin:10px 0}.section-head p{color:var(--muted);margin:0}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service{background:white;border:1px solid #e4eee9;border-radius:22px;padding:25px;box-shadow:0 7px 24px #07516a08}.service-icon{width:54px;height:54px;border-radius:17px;background:var(--blue);display:grid;place-items:center;font-size:1.65rem;margin-bottom:17px}.service:nth-child(2n) .service-icon{background:#e5f3dd}.service h3{margin:0 0 7px;color:var(--navy);font-size:1.15rem}.service p{margin:0;color:var(--muted);font-size:.96rem}
+.pricing{background:#f0f8f7}.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}.price-card{background:white;border:1px solid #dcebe6;border-radius:24px;padding:24px 20px;box-shadow:0 8px 25px #07516a08;display:flex;flex-direction:column;position:relative}.price-card.featured{border:2px solid var(--teal);transform:translateY(-7px)}.ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;background:var(--teal);color:#fff;font-size:.72rem;font-weight:900;border-radius:999px;padding:5px 12px}.price-card .hours{font-size:.92rem;font-weight:850;color:var(--teal);text-transform:uppercase;letter-spacing:.06em}.price{font-size:2.65rem;letter-spacing:-.05em;font-weight:900;color:var(--navy);margin:9px 0 0}.perhour{font-weight:750;color:var(--teal);margin-bottom:13px}.price-card p{color:var(--muted);font-size:.93rem;flex:1}.price-card .btn{width:100%;padding:11px 10px;font-size:.9rem}
+.specials{display:grid;grid-template-columns:1fr 1fr;gap:24px}.panel{border-radius:25px;padding:28px;background:#eaf6fb}.panel.green{background:#edf6e7}.panel h3{font-size:1.35rem;margin:0 0 16px;color:var(--navy)}.special-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid #cfe1e3}.special-row:last-child{border-bottom:0}.special-row strong{display:block}.special-row span{color:var(--muted);font-size:.9rem}.special-row b{white-space:nowrap;color:var(--navy);align-self:center}.conditions{list-style:none;padding:0;margin:0}.conditions li{display:flex;gap:12px;margin:15px 0}.conditions .tick{flex:0 0 29px;height:29px;border-radius:50%;background:#d2e9ce;color:#08785f;display:grid;place-items:center;font-weight:900}.conditions strong{display:block}.conditions span{color:var(--muted);font-size:.92rem}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}.about-art{width:min(100%,480px);aspect-ratio:3/4;max-height:620px;justify-self:center;background:linear-gradient(140deg,#e1f2e8,#e6f5fb);border-radius:28px;display:grid;place-items:center;padding:12px;overflow:hidden}.about-art img{display:block;width:100%;height:100%;object-fit:contain;border-radius:18px}.about-copy h2{font-size:2.3rem;line-height:1.1;color:var(--navy);margin:12px 0}.about-copy p{color:var(--muted)}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.chip{padding:8px 12px;background:#e4f2e8;border-radius:999px;font-weight:750;font-size:.85rem;color:#08785f}
+.contact{background:var(--navy);color:white}.contact .section-head h2,.contact .section-head p{color:white}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}.contact-card{background:#ffffff0d;border:1px solid #ffffff26;border-radius:24px;padding:27px}.contact-card h3{margin-top:0;font-size:1.3rem}.contact-big{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:900;letter-spacing:.01em;margin:10px 0 18px}.contact .btn{background:#21a879;color:#fff}.contact small{display:block;color:#d0e4e8;margin-top:12px}.contact a:not(.btn){color:white}footer{background:#043d50;color:#d9eef0;text-align:center;padding:23px 15px;font-size:.9rem}footer strong{color:white;letter-spacing:.08em}.fineprint{font-size:.83rem;color:#bcd8dd;margin-top:12px}
+@media(max-width:900px){.hero-grid,.about-grid{grid-template-columns:1fr}.hero-art{min-height:300px}.services-grid{grid-template-columns:repeat(2,1fr)}.price-grid{grid-template-columns:repeat(2,1fr)}.price-card.featured{transform:none}.navlinks{gap:12px}.navlinks a:not(.btn){display:none}}
+@media(max-width:600px){.wrap{width:min(100% - 28px,1120px)}.nav{min-height:72px}.brand{font-size:1rem}.logo{width:78px;height:50px}.navlinks{display:none;position:absolute;top:65px;left:14px;right:14px;background:white;border:1px solid #e4eee9;border-radius:18px;padding:16px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}.navlinks.open{display:flex}.navlinks a:not(.btn){display:block;padding:7px}.menu{display:block}.hero{padding:46px 0 42px}.hero-grid{gap:26px}.hero-art{min-height:250px;border-radius:25px}.hands{font-size:6rem}.art-card{font-size:.82rem;padding:10px 12px}.art-card.one{left:10px;bottom:18px}.art-card.two{right:10px;top:15px}section{padding:54px 0}.services-grid{grid-template-columns:1fr}.price-grid{grid-template-columns:1fr 1fr;gap:10px}.price-card{padding:20px 15px;border-radius:19px}.price{font-size:2.15rem}.price-card p{font-size:.87rem}.specials,.contact-grid{grid-template-columns:1fr}.panel{padding:22px}.special-row{gap:8px}.special-row b{font-size:.9rem}.about-art{min-height:210px}.section-head{margin-bottom:27px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Una mano en casa, inicio"><img class="logo" src="logo-una-mano.png" alt="Logo Una Mano en Casa"><span>Una mano en casa<small>Tu apoyo en el día a día</small></span></a>
+    <button class="menu" aria-label="Abrir menú" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+    <nav class="navlinks" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a><a href="#tarifas">Tarifas</a><a href="#condiciones">Condiciones</a><a href="#contacto" class="btn">Contactar</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">💚 PEQUEÑOS GESTOS, GRANDES DIFERENCIAS</span>
+      <h1>Una mano en casa,<br><em>cuando la necesitas.</em></h1>
+      <p>Ayuda cercana y flexible para las tareas del día a día. Recados, acompañamiento y compañía para ti o para las personas que más quieres.</p>
+      <div class="hero-actions"><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Una%20mano%20en%20casa.">💬 Escríbenos por WhatsApp</a><a class="btn secondary" href="#tarifas">Ver tarifas</a></div>
+      <div class="hero-note">✓ Sin permanencia · ✓ Trato cercano · ✓ Precios claros</div>
+    </div>
+    <div class="hero-art" aria-label="Jesús, de Una mano en casa"><img class="hero-photo" src="foto-acompanamiento-hospitalario.jpg" alt=""><div class="art-card one">A tu ritmo<span>La ayuda que necesitas</span></div><div class="art-card two">💚 Trato cercano<span>Personas que ayudan</span></div></div>
+  </div>
+</section>
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">¿EN QUÉ PODEMOS AYUDARTE?</span><h2>Un apoyo práctico para tu día a día</h2><p>Nos cuentas qué necesitas y acordamos el servicio y el horario según disponibilidad.</p></div>
+    <div class="services-grid">
+      <article class="service"><div class="service-icon">🛒</div><h3>Compras y recados</h3><p>Compra según tu lista y entrega del ticket, farmacia, panadería, banco, correos y otras gestiones sencillas.</p></article>
+      <article class="service"><div class="service-icon">🩺</div><h3>Acompañamiento a citas</h3><p>Compañía para acudir a consultas, pruebas, citas y gestiones, siempre dentro de las condiciones acordadas.</p></article>
+      <article class="service"><div class="service-icon">☕</div><h3>Compañía y paseos</h3><p>Un rato de conversación, un paseo tranquilo o compañía en casa cuando apetece no estar solo.</p></article>
+      <article class="service"><div class="service-icon">🏠</div><h3>Pequeños recados en casa</h3><p>Ayuda cotidiana sencilla y pequeñas gestiones domésticas previamente acordadas.</p></article>
+      <article class="service"><div class="service-icon">🏥</div><h3>Acompañamiento hospitalario</h3><p>Consulta disponibilidad y condiciones para acompañamiento durante una estancia hospitalaria.</p></article>
+      <article class="service"><div class="service-icon">🚗</div><h3>Apoyo en el alta</h3><p>Ayuda para organizar la vuelta a casa y las gestiones prácticas tras el alta, según lo que necesites.</p></article>
+    </div>
+  </div>
+</section>
+<section class="pricing" id="tarifas">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">TARIFAS CLARAS</span><h2>Elige el pack que mejor te venga</h2><p>Servicios flexibles, sin permanencia. Los packs largos se organizan en varias visitas según disponibilidad.</p></div>
+    <div class="price-grid">
+      <article class="price-card"><div class="hours">Servicio puntual</div><div class="price">19 €</div><div class="perhour">por hora</div><p>Para un recado o una gestión sencilla cuando necesitas una ayuda rápida.</p><a class="btn secondary" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20consultar%20el%20servicio%20puntual%20de%201%20hora.">Consultar</a></article>
+      <article class="price-card featured"><div class="ribbon">⭐ RECOMENDADO</div><div class="hours">Pack de 3 horas</div><div class="price">54 €</div><div class="perhour">18 €/hora</div><p>Ideal para acompañamiento, compras o varias gestiones según tus necesidades y disponibilidad.</p><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20reservar%20o%20consultar%20el%20pack%20de%203%20horas.">Elegir pack</a></article>
+      <article class="price-card"><div class="hours">Pack de 6 horas</div><div class="price">108 €</div><div class="perhour">18 €/hora</div><p>Horas organizadas en una o varias visitas según tus necesidades y disponibilidad.</p><a class="btn secondary" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20consultar%20el%20pack%20de%206%20horas.">Consultar</a></article>
+      <article class="price-card"><div class="hours">Pack de 12 horas</div><div class="price">216 €</div><div class="perhour">18 €/hora</div><p>Para clientes habituales que necesitan apoyo repartido en varias visitas.</p><a class="btn secondary" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20consultar%20el%20pack%20de%2012%20horas.">Consultar</a></article>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.88rem;margin-top:22px">Consulta previamente disponibilidad, desplazamientos y condiciones del servicio.</p>
+  </div>
+</section>
+<section id="condiciones">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">TRANSPARENCIA DESDE EL PRINCIPIO</span><h2>Servicios especiales y condiciones</h2><p>Queremos que sepas qué incluye el servicio antes de contratarlo.</p></div>
+    <div class="specials">
+      <div class="panel"><h3>Servicios especiales</h3>
+        <div class="special-row"><div><strong>Recados sencillos</strong><span>Supermercado, farmacia y gestiones</span></div><b>Desde 19 €/h</b></div>
+        <div class="special-row"><div><strong>Acompañamiento a consulta</strong><span>Otras gestiones médicas</span></div><b>Desde 19 €/h</b></div>
+        <div class="special-row"><div><strong>Compañía en casa o paseo</strong><span>Tiempo de calidad y conversación</span></div><b>Desde 19 €/h</b></div>
+        <div class="special-row"><div><strong>Acompañamiento hospitalario</strong><span>Consultar condiciones y disponibilidad</span></div><b>Desde 19 €/h</b></div>
+        <div class="special-row"><div><strong>Tiempo adicional</strong><span>Tras 15 minutos de cortesía, por cada bloque de 30 min</span></div><b>9,50 € puntual · 9 € pack</b></div>
+      </div>
+      <div class="panel green"><h3>Condiciones generales</h3><ul class="conditions">
+        <li><div class="tick">✓</div><div><strong>Zonas de servicio</strong><span>Elche, Crevillente, Aspe y pedanías. Consulta posibles suplementos por desplazamiento.</span></div></li>
+        <li><div class="tick">✓</div><div><strong>Packs de horas</strong><span>Las horas se organizan en una o varias visitas, según acuerdo y disponibilidad.</span></div></li>
+        <li><div class="tick">✓</div><div><strong>Tiempo adicional</strong><span>Los primeros 15 minutos que excedan el horario contratado son de cortesía. Desde entonces se cobra cada bloque completo de 30 minutos: 9,50 € en servicio puntual o 9 € con pack.</span></div></li>
+        <li><div class="tick">✓</div><div><strong>Compras y recados</strong><span>El coste de los productos o tasas lo abona el cliente aparte, con justificante.</span></div></li>
+        <li><div class="tick">✓</div><div><strong>Sin permanencia</strong><span>Contrata cuando lo necesites. Las cancelaciones deben comunicarse con antelación.</span></div></li>
+      </ul></div>
+    </div>
+    <p style="color:var(--muted);font-size:.86rem;margin-top:18px">Una mano en casa ofrece apoyo cotidiano y acompañamiento no sanitario. No sustituye a servicios médicos, de emergencia ni a profesionales sanitarios o sociales. Las condiciones definitivas se confirmarán al reservar.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap about-grid">
+    <div class="about-art"><img src="foto-quienes-somos.jpeg" alt="Jesús, de Una mano en casa"></div>
+    <div class="about-copy"><span class="eyebrow">QUIÉNES SOMOS</span><h2>Más tranquilidad para ti y los tuyos</h2><p>A veces, una pequeña ayuda marca la diferencia: hacer una compra, acompañar a una cita o tener a alguien con quien contar. La idea es ofrecer un trato humano, flexible y claro, adaptado a cada necesidad.</p><div class="chips"><span class="chip">Elche</span><span class="chip">Crevillente</span><span class="chip">Aspe</span><span class="chip">Pedanías</span></div><div class="hero-actions"><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20si%20pod%C3%A9is%20ayudarme.">Cuéntanos qué necesitas</a></div></div>
+  </div>
+</section>
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow" style="background:#ffffff1c;color:#d5f6e7">CONTACTO</span><h2>¿Hablamos?</h2><p>Cuéntanos qué necesitas y vemos juntos cómo podemos ayudarte.</p></div>
+    <div class="contact-grid">
+      <div class="contact-card"><h3>📱 Teléfono y WhatsApp</h3><div class="contact-big">624 249 294</div><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Una%20mano%20en%20casa.">Abrir WhatsApp</a><small>Si prefieres llamar, utiliza el número indicado.</small></div>
+      <div class="contact-card"><h3>📍 Zona de servicio</h3><p>Elche · Crevillente · Aspe y pedanías</p><p>Horario y disponibilidad: se confirman al contactar.</p><a class="btn" href="tel:+34624249294">Llamar ahora</a><div class="fineprint">No es un servicio de emergencias. En una urgencia, llama al 112.</div></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><strong>UNA MANO EN CASA</strong><br>Más que un servicio, un apoyo real.<br><span style="font-size:.8rem">Pequeños gestos, grandes diferencias · 624 249 294</span></footer>
+<script>
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));
+</script>
+</body>
+</html>
+
