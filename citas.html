@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07516a">
+<title>Solicitar cita | Una mano en casa</title>
+<link rel="icon" href="icon-192.png">
+<style>
+:root { color-scheme: light; --navy:#07516a; --teal:#078b72; --ink:#164b60; --cream:#fffdf7; }
+* { box-sizing:border-box }
+[hidden] { display:none !important }
+body { margin:0; font:1rem/1.55 Inter,system-ui,sans-serif; background:var(--cream); color:var(--ink) }
+header { background:white; border-bottom:4px solid var(--teal) }
+.wrap { width:min(780px, calc(100% - 32px)); margin:auto }
+header a { display:inline-flex; align-items:center; gap:12px; min-height:74px; color:var(--navy); text-decoration:none; font-weight:800 }
+header img { width:88px; height:54px; object-fit:contain }
+main { padding:28px 0 48px }
+h1,h2 { color:var(--navy); line-height:1.2 }
+.card { margin:16px 0; padding:clamp(16px,4vw,28px); background:white; border:1px solid #dcebed; border-radius:20px; box-shadow:0 10px 30px #07516a10 }
+.card h2 { margin-top:0 }
+fieldset { margin:0; border:0; padding:0; min-width:0 }
+label { display:flex; flex-direction:column; gap:4px; font-weight:700; margin:12px 0 }
+input,select { min-width:0; width:100%; padding:10px; border:1px solid #82a7ad; border-radius:8px; color:inherit; font:inherit; background:white }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:0 16px }
+.actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:12px 0 }
+button { min-height:44px; padding:8px 16px; border:1px solid var(--navy); border-radius:999px; background:#fff; color:var(--navy); cursor:pointer; font:inherit; font-weight:750 }
+button.primary { background:#08785f; color:white; border-color:#08785f }
+button:disabled { opacity:.55; cursor:default }
+:focus-visible { outline:3px solid #07516a; outline-offset:3px }
+#status { min-height:1.55em; font-weight:700; scroll-margin-top:12px }
+.error { color:#9a292d }
+li + li { margin-top:8px }
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./"><img src="logo-una-mano.png" alt="">Una mano en casa</a></div></header>
+<main class="wrap">
+<h1>Solicitar cita</h1>
+<p>Elige un horario para la primera visita de tu pack. Te confirmaremos la cita después de revisar tu solicitud.</p>
+<p id="status" role="status" aria-live="polite">Cargando la agenda…</p>
+<noscript>Activa JavaScript para usar la agenda online.</noscript>
+<section id="auth" class="card" hidden>
+  <h2>Acceso de clientes</h2>
+  <button id="google" class="primary" type="button">Continuar con Google</button>
+  <form id="email-form">
+    <label>Correo electrónico<input name="email" type="email" maxlength="254" autocomplete="email" required></label>
+    <button type="submit">Enviar enlace de acceso</button>
+  </form>
+</section>
+<div id="account" hidden>
+  <div class="actions"><span id="email-label"></span><button type="button" id="logout">Cerrar sesión</button></div>
+  <form id="booking" class="card" hidden>
+    <fieldset>
+      <h2>Calendario de disponibilidad</h2>
+      <div class="grid">
+        <label>Pack<select name="pack"><option value="3">3 horas · 54 €</option><option value="6">6 horas · 108 €</option><option value="12">12 horas · 216 €</option></select></label>
+        <label>Duración de la primera visita<select name="minutes" required></select></label>
+      </div>
+      <p id="range"></p>
+      <div class="actions">
+        <button type="button" id="prev">Fechas anteriores</button>
+        <button type="button" id="next">Fechas siguientes</button>
+        <button type="button" id="reload-calendar">Actualizar horarios</button>
+      </div>
+      <div class="grid">
+        <label>Día disponible<select name="day" required></select></label>
+        <label>Hora peninsular<select name="start" required></select></label>
+      </div>
+      <h2>Datos de la visita</h2>
+      <div class="grid">
+        <label>Nombre y apellidos<input name="full_name" autocomplete="name" minlength="2" maxlength="120" required></label>
+        <label>Teléfono<input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label>
+        <label>Dirección<input name="address" autocomplete="street-address" minlength="4" maxlength="240" required></label>
+        <label>Localidad<input name="zone" autocomplete="address-level2" minlength="2" maxlength="100" required></label>
+        <label>Persona a acompañar (opcional)<input name="beneficiary" maxlength="120"></label>
+        <label>Método de pago preferido<select name="method" required></select></label>
+      </div>
+      <p>Usaremos tus datos de contacto para gestionar la cita. El pago se acuerda al confirmar.</p>
+      <button id="request" class="primary" type="submit">Enviar solicitud</button>
+    </fieldset>
+  </form>
+  <section class="card" aria-labelledby="history-title">
+    <h2 id="history-title">Mis solicitudes</h2>
+    <button type="button" id="reload-history">Actualizar solicitudes</button>
+    <p id="history-note" role="status"></p>
+    <ul id="items"></ul>
+  </section>
+</div>
+<p><a href="./#contacto">Contactar con Una mano en casa</a></p>
+</main>
+<script type="module" src="./citas.js"></script>
+</body>
+</html>
