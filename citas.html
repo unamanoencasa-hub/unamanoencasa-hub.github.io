@@ -85,6 +85,8 @@ dd {margin:0 0 12px;overflow-wrap:anywhere}
 button.danger {border-color:#b66c70;color:#ffd3d0}
 #delete-dialog {width:min(440px,calc(100% - 28px));background:#17222e;color:#e8f1f2;border:1px solid #405466;border-radius:14px;padding:20px}
 #delete-dialog::backdrop {background:#05090dc4}
+.calendar button[data-visit-end] {box-shadow:inset 0 0 0 2px #9cebc2;color:#d3f6e4}
+.visit-range {grid-column:1/-1;padding:10px 12px;margin:4px 0;color:#b9f2d9;background:#162f37;border-radius:8px}
 </style>
 </head>
 <body>
@@ -128,7 +130,8 @@ button.danger {border-color:#b66c70;color:#ffd3d0}
       <div class="grid">
         <input name="day" type="hidden">
         <label><span id="time-label">Hora de la cita</span><select name="start" aria-describedby="time-help" required></select></label>
-        <small id="time-help">Se muestran las horas de inicio en las que cabe la visita completa dentro del día seleccionado.</small>
+        <small id="time-help">Elige la hora de inicio. Si la visita continúa al día siguiente, verás el tramo de cada día.</small>
+        <p id="visit-range" class="visit-range" aria-live="polite" hidden></p>
       </div>
       <div id="visit-details" hidden><h2>Datos de la visita</h2>
       <div class="grid">
@@ -333,6 +336,31 @@ async function rpc(name, params) {
 function choices(select, values, label = String) {
   select.replaceChildren(...values.map(value => new Option(label(value), value)));
 }
+const shortDate = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+function showVisitRange() {
+  const day = booking.day.value;
+  const start = booking.start.value;
+  const pack = selectedPack();
+  const display = $('visit-range');
+  const end = day && start && pack ? new Date(Date.parse(day + 'T' + start.slice(0,5) + ':00Z') + pack.minutes * 60000) : null;
+  const endDate = end?.toISOString().slice(0,10);
+  const endHour = end?.toISOString().slice(11,16);
+  for (const cell of $('calendar').querySelectorAll('button')) {
+    const continues = Boolean(endDate && endHour !== '00:00' && endDate !== day && cell.dataset.day === endDate);
+    cell.toggleAttribute('data-visit-end', continues);
+    const label = pretty(cell.dataset.day) + (cell.disabled ? ', sin inicios disponibles' : ', disponible');
+    cell.setAttribute('aria-label', label + (continues ? ', la visita seleccionada continúa este día' : ''));
+  }
+  display.hidden = !end;
+  if (!end) return;
+  const labelDay = date => shortDate.format(new Date(date + 'T12:00:00Z'));
+  const from = labelDay(day) + ' a las ' + start.slice(0,5);
+  display.textContent = 'Del ' + from + ' al ' + labelDay(endDate) + ' a las ' + endHour +
+    (endDate !== day && endHour !== '00:00'
+      ? '. Tramos: ' + labelDay(day) + ', ' + start.slice(0,5) + '–24:00 · ' + labelDay(endDate) + ', 00:00–' + endHour + '.'
+      : '.');
+}
+booking.start.onchange = showVisitRange;
 function showHours() {
   const hours = available[booking.day.value] || [];
   choices(booking.start, hours);
@@ -340,6 +368,7 @@ function showHours() {
   booking.start.disabled = !hours.length;
   $('visit-details').hidden = !hours.length;
   $('request').disabled = !hours.length;
+  showVisitRange();
 }
 function drawCalendar() {
   const end = addDays(moveMonth(first, 1), -1);
