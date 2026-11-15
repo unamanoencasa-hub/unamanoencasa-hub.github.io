@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07516a">
+<meta name="theme-color" content="#ffffff">
 <title>Solicitar cita | Una mano en casa</title>
 <link rel="icon" href="https://unamanoencasa-hub.github.io/icon-192.png">
 <style>
-:root { color-scheme: dark; --navy:#07516a; --teal:#078b72; --ink:#164b60; --cream:#fffdf7; }
+:root { color-scheme: light; --navy:#07516a; --teal:#078b72; --ink:#164b60; --cream:#fffdf7; }
 * { box-sizing:border-box }
 [hidden] { display:none !important }
 body { margin:0; font:1rem/1.55 Inter,system-ui,sans-serif; background:var(--cream); color:var(--ink) }
@@ -48,45 +48,60 @@ main {padding-top:14px}
 #booking {margin-top:8px}
 .duration {margin:12px 0;display:grid;align-content:start;gap:4px;font-weight:700}
 .duration output {display:block;padding:10px 12px;background:#f0f5f4;border:1px solid #cadbd8;border-radius:8px}
-body {color:#e8f1f2;background:#101720}
-header {background:#121b25;border-bottom:1px solid #2c3a46}
-header a,h1,h2,h3 {color:#f3f7f8}
+body {color:#164b60;background:#f7fbf9}
+header {background:#fff;border-bottom:4px solid transparent;border-image:linear-gradient(90deg,#08a6a0,#13b88b,#7aca6b) 1}
+header a,h1,h2,h3 {color:#07516a}
 header img {border-radius:5px}
 .wrap {width:min(780px,calc(100% - 28px))}
 main {padding-top:20px}
-.page-heading + p,.contact-link {color:#b4c3cd}
-.contact-link a {color:#9eeccc}
-.card {background:#17222e;border-color:#2b3a48;box-shadow:none;padding:clamp(12px,3vw,24px)}
+.page-heading + p,.contact-link {color:#426a79}
+.contact-link a {color:#08785f}
+.card {background:#ffffff;border-color:#dcebe6;box-shadow:0 10px 30px #07516a10;padding:clamp(12px,3vw,24px)}
 .portal-nav {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
-button,input,select {background:#101a24;color:#edf4f5;border-color:#405466}
-button.primary {background:#92e8bd;border-color:#92e8bd;color:#10271e}
-button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible {outline-color:#a1eccc}
+button,input,select {background:#ffffff;color:#164b60;border-color:#a9c7ca}
+button.primary {background:#08785f;border-color:#08785f;color:#ffffff}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible {outline-color:#07516a}
 .portal-nav button {display:grid;place-content:center;gap:2px;min-height:62px;border-radius:12px;font-size:.9rem}
 .portal-nav button span {font-size:1.16rem;line-height:1.05}
-.portal-nav button[aria-current] {color:#a5f2cc;background:#163b33;border-color:#4c9d7e}
-.duration output {background:#162f37;color:#b9f2d9;border-color:#3e605f}
+.portal-nav button[aria-current] {color:#075b4a;background:#e0f4e7;border-color:#70aa97}
+.duration output {background:#eef8f4;color:#075b4a;border-color:#b5d8ca}
 .calendar-heading {font-size:1rem;margin:16px 0 4px}
 .month-nav {display:grid;grid-template-columns:44px 1fr 44px;align-items:center;text-align:center;margin:4px 0}
 .month-nav p {margin:0;font-weight:750}
 .month-nav button {font-size:1.5rem;padding:0;border-radius:10px}
 .calendar {gap:5px;margin:5px 0 10px}
-.calendar span {color:#b4c3cd}
-.calendar button {color:#b7f8d6;background:#173d34;border-color:#467e69;font-weight:750}
-.calendar button:disabled {background:#121b25;color:#a0afbb;border-color:#283642}
-.calendar button[aria-pressed=true] {color:#10271e;background:#9cebc2;border-color:#9cebc2}
-#visit-details {border-top:1px solid #344452;margin-top:14px;padding-top:14px}
-#visit-details p,dt {color:#bbc9d2}
+.calendar span {color:#426a79}
+.calendar button {color:#075b4a;background:#e0f4e7;border-color:#a2cbbb;font-weight:750}
+.calendar button:disabled {background:#f2f6f5;color:#586d74;border-color:#dce7e7}
+.calendar button[aria-pressed=true] {color:#ffffff;background:#07516a;border-color:#07516a}
+#visit-details {border-top:1px solid #dcebe6;margin-top:14px;padding-top:14px}
+#visit-details p,dt {color:#426a79}
 dd {margin:0 0 12px;overflow-wrap:anywhere}
 .appointment-list {list-style:none;margin:0;padding:0}
-.appointment-list li {padding:10px 12px;background:#101a24;border:1px solid #314352;border-radius:8px}
-.error {color:#ffc6be}
-.delete-account {border-top:1px solid #344452;margin-top:18px;padding-top:14px}
+.appointment-list li {padding:10px 12px;background:#ffffff;border:1px solid #dcebe6;border-radius:8px}
+.error {color:#9a292d}
+.delete-account {border-top:1px solid #dcebe6;margin-top:18px;padding-top:14px}
 .delete-account h3,#delete-title {margin:0}
-button.danger {border-color:#b66c70;color:#ffd3d0}
-#delete-dialog {width:min(440px,calc(100% - 28px));background:#17222e;color:#e8f1f2;border:1px solid #405466;border-radius:14px;padding:20px}
-#delete-dialog::backdrop {background:#05090dc4}
-.calendar button[data-visit-end] {box-shadow:inset 0 0 0 2px #9cebc2;color:#d3f6e4}
-.visit-range {grid-column:1/-1;padding:10px 12px;margin:4px 0;color:#b9f2d9;background:#162f37;border-radius:8px}
+button.danger {border-color:#b66c70;color:#9a292d}
+#delete-dialog {width:min(440px,calc(100% - 28px));background:#ffffff;color:#164b60;border:1px solid #a9c7ca;border-radius:14px;padding:20px}
+#delete-dialog::backdrop {background:#102c3e70}
+.calendar button[data-visit-end] {box-shadow:inset 0 0 0 2px #08785f;background:#e0f4e7;color:#075b4a}
+.visit-range {grid-column:1/-1;padding:10px 12px;margin:4px 0;color:#075b4a;background:#eef8f4;border-radius:8px}
+
+/* Paleta de la portada */
+body {background:radial-gradient(ellipse at 95% 0%,#d8eee3 0%,transparent 48%),linear-gradient(135deg,#fffdf7,#edf7f7)}
+.card {background:linear-gradient(155deg,#fff 63%,#f0f9f6);border-color:#c7dfd8}
+.portal-nav button {background:#eaf4f8;color:#07516a;border-color:#b9d7df}
+.portal-nav button[aria-current] {background:#07516a;color:#fff;border-color:#07516a}
+.duration output,.visit-range {background:#dff2e8;color:#075b4a}
+.month-nav button {background:#edf6f8;border-color:#b9d7df}
+.calendar button:disabled {background:#fbe9e7;border-color:#edc6c3;color:#85443e}
+.calendar button[data-visit-end] {background:#e0f4e7;border-color:#a2cbbb;color:#075b4a}
+
+.calendar-key {display:flex;flex-wrap:wrap;gap:4px 14px;margin:0 0 10px;font-size:.78rem;color:#426a79}
+.calendar-key span {display:inline-flex;align-items:center;gap:5px}
+.calendar-key i {width:9px;height:9px;border-radius:50%;background:#e0f4e7;border:1px solid #70aa97}
+.calendar-key span + span i {background:#fbe9e7;border-color:#bd7770}
 </style>
 </head>
 <body>
@@ -127,6 +142,7 @@ button.danger {border-color:#b66c70;color:#ffd3d0}
         <button type="button" id="next" aria-label="Mes siguiente">›</button>
       </div>
       <div id="calendar" class="calendar" aria-label="Días y disponibilidad"></div>
+      <p class="calendar-key"><span><i aria-hidden="true"></i> Verde: días disponibles</span><span><i aria-hidden="true"></i> Rojo: días no disponibles</span></p>
       <div class="grid">
         <input name="day" type="hidden">
         <label><span id="time-label">Hora de la cita</span><select name="start" aria-describedby="time-help" required></select></label>
