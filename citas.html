@@ -127,7 +127,8 @@ button.danger {border-color:#b66c70;color:#ffd3d0}
       <div id="calendar" class="calendar" aria-label="Días y disponibilidad"></div>
       <div class="grid">
         <input name="day" type="hidden">
-        <label><span id="time-label">Hora peninsular</span><select name="start" required></select></label>
+        <label><span id="time-label">Hora de la cita</span><select name="start" aria-describedby="time-help" required></select></label>
+        <small id="time-help">Se muestran las horas de inicio en las que cabe la visita completa dentro del día seleccionado.</small>
       </div>
       <div id="visit-details" hidden><h2>Datos de la visita</h2>
       <div class="grid">
