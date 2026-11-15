@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07516a">
 <title>Solicitar cita | Una mano en casa</title>
-<link rel="icon" href="icon-192.png">
+<link rel="icon" href="https://unamanoencasa-hub.github.io/icon-192.png">
 <style>
-:root { color-scheme: light; --navy:#07516a; --teal:#078b72; --ink:#164b60; --cream:#fffdf7; }
+:root { color-scheme: dark; --navy:#07516a; --teal:#078b72; --ink:#164b60; --cream:#fffdf7; }
 * { box-sizing:border-box }
 [hidden] { display:none !important }
 body { margin:0; font:1rem/1.55 Inter,system-ui,sans-serif; background:var(--cream); color:var(--ink) }
@@ -31,13 +31,68 @@ button:disabled { opacity:.55; cursor:default }
 #status { min-height:1.55em; font-weight:700; scroll-margin-top:12px }
 .error { color:#9a292d }
 li + li { margin-top:8px }
+.calendar {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:14px 0}
+.calendar span,.calendar button {text-align:center;min-width:0;padding:5px 0;font-size:.85rem}
+.calendar button {border-radius:8px;color:#114d36;background:#e0f4e7;border-color:#a1cbb0}
+.calendar button:disabled {background:#f1f3f3;color:#52666b;border-color:#d8e1e2;opacity:1}
+.calendar button[aria-pressed=true] {background:#07516a;color:white}
+header a {min-height:54px}
+header img {width:65px;height:42px}
+main {padding-top:14px}
+.page-heading {display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px}
+.page-heading h1 {margin:0;font-size:clamp(1.25rem,3vw,1.5rem)}
+#preview {padding:3px 9px;border-radius:999px;background:#dff1e7;color:#164d36;font-size:.8rem;font-weight:750}
+.page-heading + p {margin:6px 0 10px}
+#status:empty {min-height:0;margin:0}
+#account > .actions {margin:4px 0 8px}
+#booking {margin-top:8px}
+.duration {margin:12px 0;display:grid;align-content:start;gap:4px;font-weight:700}
+.duration output {display:block;padding:10px 12px;background:#f0f5f4;border:1px solid #cadbd8;border-radius:8px}
+body {color:#e8f1f2;background:#101720}
+header {background:#121b25;border-bottom:1px solid #2c3a46}
+header a,h1,h2,h3 {color:#f3f7f8}
+header img {border-radius:5px}
+.wrap {width:min(780px,calc(100% - 28px))}
+main {padding-top:20px}
+.page-heading + p,.contact-link {color:#b4c3cd}
+.contact-link a {color:#9eeccc}
+.card {background:#17222e;border-color:#2b3a48;box-shadow:none;padding:clamp(12px,3vw,24px)}
+.portal-nav {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+button,input,select {background:#101a24;color:#edf4f5;border-color:#405466}
+button.primary {background:#92e8bd;border-color:#92e8bd;color:#10271e}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible {outline-color:#a1eccc}
+.portal-nav button {display:grid;place-content:center;gap:2px;min-height:62px;border-radius:12px;font-size:.9rem}
+.portal-nav button span {font-size:1.16rem;line-height:1.05}
+.portal-nav button[aria-current] {color:#a5f2cc;background:#163b33;border-color:#4c9d7e}
+.duration output {background:#162f37;color:#b9f2d9;border-color:#3e605f}
+.calendar-heading {font-size:1rem;margin:16px 0 4px}
+.month-nav {display:grid;grid-template-columns:44px 1fr 44px;align-items:center;text-align:center;margin:4px 0}
+.month-nav p {margin:0;font-weight:750}
+.month-nav button {font-size:1.5rem;padding:0;border-radius:10px}
+.calendar {gap:5px;margin:5px 0 10px}
+.calendar span {color:#b4c3cd}
+.calendar button {color:#b7f8d6;background:#173d34;border-color:#467e69;font-weight:750}
+.calendar button:disabled {background:#121b25;color:#a0afbb;border-color:#283642}
+.calendar button[aria-pressed=true] {color:#10271e;background:#9cebc2;border-color:#9cebc2}
+#visit-details {border-top:1px solid #344452;margin-top:14px;padding-top:14px}
+#visit-details p,dt {color:#bbc9d2}
+dd {margin:0 0 12px;overflow-wrap:anywhere}
+.appointment-list {list-style:none;margin:0;padding:0}
+.appointment-list li {padding:10px 12px;background:#101a24;border:1px solid #314352;border-radius:8px}
+.error {color:#ffc6be}
+.delete-account {border-top:1px solid #344452;margin-top:18px;padding-top:14px}
+.delete-account h3,#delete-title {margin:0}
+button.danger {border-color:#b66c70;color:#ffd3d0}
+#delete-dialog {width:min(440px,calc(100% - 28px));background:#17222e;color:#e8f1f2;border:1px solid #405466;border-radius:14px;padding:20px}
+#delete-dialog::backdrop {background:#05090dc4}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a href="./"><img src="logo-una-mano.png" alt="">Una mano en casa</a></div></header>
+<header><div class="wrap"><a href="./index.html"><img src="https://unamanoencasa-hub.github.io/logo-una-mano.png" alt="">Una mano en casa</a></div></header>
 <main class="wrap">
-<h1>Solicitar cita</h1>
-<p>Elige un horario para la primera visita de tu pack. Te confirmaremos la cita después de revisar tu solicitud.</p>
+<div class="page-heading"><h1>Mi portal de cliente</h1><span id="preview" hidden>Vista de revisión · Datos de ejemplo</span></div>
+
+<p>Elige un pack y un horario. Te confirmaremos la cita tras revisar tu solicitud.</p>
 <p id="status" role="status" aria-live="polite">Cargando la agenda…</p>
 <noscript>Activa JavaScript para usar la agenda online.</noscript>
 <section id="auth" class="card" hidden>
@@ -49,46 +104,456 @@ li + li { margin-top:8px }
   </form>
 </section>
 <div id="account" hidden>
-  <div class="actions"><span id="email-label"></span><button type="button" id="logout">Cerrar sesión</button></div>
+  <nav class="portal-nav" aria-label="Portal de cliente">
+    <button type="button" data-panel="reserve" aria-controls="reserve" aria-current="true"><span aria-hidden="true">▦</span>Reservar</button>
+    <button type="button" data-panel="appointments" aria-controls="appointments"><span aria-hidden="true">☷</span>Mis citas</button>
+    <button type="button" data-panel="profile" aria-controls="profile"><span aria-hidden="true">♙</span>Mi ficha</button>
+  </nav>
+  <div id="reserve">
+
   <form id="booking" class="card" hidden>
     <fieldset>
-      <h2>Calendario de disponibilidad</h2>
+      <h2>Reserva tu visita</h2>
       <div class="grid">
-        <label>Pack<select name="pack"><option value="3">3 horas · 54 €</option><option value="6">6 horas · 108 €</option><option value="12">12 horas · 216 €</option></select></label>
-        <label>Duración de la primera visita<select name="minutes" required></select></label>
+        <label>Pack<select id="pack" name="pack" required></select></label>
+        <div class="duration"><span>Duración de la visita</span><output id="visit-duration" for="pack" aria-live="polite">—</output></div>
       </div>
-      <p id="range"></p>
-      <div class="actions">
-        <button type="button" id="prev">Fechas anteriores</button>
-        <button type="button" id="next">Fechas siguientes</button>
-        <button type="button" id="reload-calendar">Actualizar horarios</button>
+      <h3 class="calendar-heading">Selecciona el día de tu visita</h3>
+      <div class="month-nav">
+        <button type="button" id="prev" aria-label="Mes anterior">‹</button>
+        <p id="range" aria-live="polite"></p>
+        <button type="button" id="next" aria-label="Mes siguiente">›</button>
       </div>
+      <div id="calendar" class="calendar" aria-label="Días y disponibilidad"></div>
       <div class="grid">
-        <label>Día disponible<select name="day" required></select></label>
-        <label>Hora peninsular<select name="start" required></select></label>
+        <input name="day" type="hidden">
+        <label><span id="time-label">Hora peninsular</span><select name="start" required></select></label>
       </div>
-      <h2>Datos de la visita</h2>
+      <div id="visit-details" hidden><h2>Datos de la visita</h2>
       <div class="grid">
         <label>Nombre y apellidos<input name="full_name" autocomplete="name" minlength="2" maxlength="120" required></label>
         <label>Teléfono<input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label>
         <label>Dirección<input name="address" autocomplete="street-address" minlength="4" maxlength="240" required></label>
         <label>Localidad<input name="zone" autocomplete="address-level2" minlength="2" maxlength="100" required></label>
-        <label>Persona a acompañar (opcional)<input name="beneficiary" maxlength="120"></label>
+        <label>¿Para quién es la visita?<select id="recipient"><option value="self">Para mí</option><option value="other">Para otra persona</option></select></label>
+        <label id="beneficiary-field" hidden>Nombre de la persona a acompañar<input name="beneficiary" maxlength="120"></label>
         <label>Método de pago preferido<select name="method" required></select></label>
       </div>
       <p>Usaremos tus datos de contacto para gestionar la cita. El pago se acuerda al confirmar.</p>
       <button id="request" class="primary" type="submit">Enviar solicitud</button>
+      </div>
     </fieldset>
   </form>
-  <section class="card" aria-labelledby="history-title">
-    <h2 id="history-title">Mis solicitudes</h2>
+  </div>
+  <section id="appointments" class="card" aria-labelledby="history-title" hidden>
+    <h2 id="history-title">Mis citas y solicitudes</h2>
+    <h3>Próximas citas y solicitudes</h3><ul id="upcoming" class="appointment-list"></ul>
+    <h3>Historial</h3>
     <button type="button" id="reload-history">Actualizar solicitudes</button>
     <p id="history-note" role="status"></p>
-    <ul id="items"></ul>
+    <ul id="items" class="appointment-list"></ul>
+  </section>
+  <section id="profile" class="card" aria-labelledby="profile-title" hidden>
+    <h2 id="profile-title">Mi ficha</h2>
+    <form id="contact-form">
+    <div class="grid">
+      <label>Nombre y apellidos<input name="full_name" autocomplete="name" minlength="2" maxlength="120" required></label>
+      <label>Correo de acceso<input id="email-label" type="email" readonly></label>
+      <label>Teléfono<input name="phone" type="tel" autocomplete="tel" minlength="7" maxlength="40" required></label>
+      <label>Dirección<input name="address" autocomplete="street-address" minlength="4" maxlength="240" required></label>
+      <label>Localidad<input name="zone" autocomplete="address-level2" minlength="2" maxlength="100" required></label>
+    </div>
+    <button type="submit" id="save-contact" class="primary" disabled>Guardar cambios</button>
+    <p id="contact-status" role="status"></p>
+    </form>
+    <button type="button" id="logout">Cerrar sesión</button>
+    <div class="delete-account">
+      <h3>Eliminar cuenta</h3>
+      <p id="delete-note">La eliminación online está pendiente de activación.</p>
+      <button type="button" id="delete-account" class="danger" aria-describedby="delete-note" disabled>Eliminar mi cuenta</button>
+    </div>
   </section>
 </div>
-<p><a href="./#contacto">Contactar con Una mano en casa</a></p>
+<dialog id="delete-dialog" aria-labelledby="delete-title">
+  <form method="dialog">
+    <h2 id="delete-title">¿Eliminar tu cuenta de ejemplo?</h2>
+    <p>Se borrarán la ficha y las solicitudes de ejemplo de esta sesión.</p>
+    <div class="actions">
+      <button value="cancel" autofocus>Volver</button>
+      <button value="delete" class="danger">Confirmar eliminación</button>
+    </div>
+  </form>
+</dialog>
+<p class="contact-link"><a href="./index.html#contacto">Contactar con Una mano en casa</a></p>
 </main>
-<script type="module" src="./citas.js"></script>
+<script type="module">
+const isPreview = location.hostname !== "unamanoencasa-hub.github.io";
+const createClient = isPreview ? null : (await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/+esm')).createClient;
+
+const portal = !isPreview && createClient('https://mkyzpdrcbrttifvveywl.supabase.co', 'sb_publishable_LhdSwoOA4oayVkiwM1CvNQ_eo_xoCdd', {
+  auth: { flowType: 'pkce', storageKey: 'umec-clientes' }
+});
+const $ = id => document.getElementById(id);
+const booking = $('booking');
+const dateFormat = new Intl.DateTimeFormat('es-ES', { dateStyle: 'full', timeZone: 'Europe/Madrid' });
+const madridToday = () => new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Madrid' });
+const addDays = (date, count) => {
+  const day = new Date(date + 'T12:00:00Z');
+  day.setUTCDate(day.getUTCDate() + count);
+  return day.toISOString().slice(0, 10);
+};
+const pretty = date => dateFormat.format(new Date(date + 'T12:00:00Z'));
+const callback = new URL('./citas.html', location.href).href;
+const callbacks = new URLSearchParams(location.search);
+const callbackError = callbacks.has('error') || new URLSearchParams(location.hash.slice(1)).has('error');
+const labels = { pending: 'Pendiente de confirmación', pendiente: 'Pendiente de confirmación',
+  rejected: 'Rechazada', asignado: 'Confirmada', 'en curso': 'En curso', completado: 'Completada',
+  incidencia: 'Incidencia', cancelado: 'Cancelada' };
+const monthStart = day => day.slice(0, 7) + '-01';
+const moveMonth = (day, count) => {
+  const date = new Date(monthStart(day) + 'T12:00:00Z');
+  date.setUTCMonth(date.getUTCMonth() + count);
+  return date.toISOString().slice(0, 10);
+};
+const monthLabel = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric', timeZone: 'Europe/Madrid' });
+let first = monthStart(madridToday());
+const panels = ['reserve', 'appointments', 'profile'];
+function showPanel(panel) {
+  for (const id of panels) $(id).hidden = id !== panel;
+  for (const button of document.querySelectorAll('[data-panel]')) {
+    if (button.dataset.panel === panel) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  }
+}
+for (const button of document.querySelectorAll('[data-panel]')) {
+  button.onclick = () => showPanel(button.dataset.panel);
+}
+let available = {};
+let generation = 0;
+let currentUser = null;
+let attempt = null;
+const examples = [];
+const contactForm = $('contact-form');
+const contactFields = ['full_name', 'phone', 'address', 'zone'];
+let contactUser = null;
+let exampleContact = { full_name: 'Cliente de ejemplo', phone: '600 000 000', address: 'Calle de Ejemplo, 1', zone: 'Elche' };
+function renderProfile(user, details = {}, prefill = false) {
+  $('email-label').value = user?.email || '';
+  for (const field of contactFields) {
+    const fallback = field === 'full_name' ? user?.user_metadata?.full_name : '';
+    const value = details[field] || fallback || '';
+    contactForm.elements.namedItem(field).value = value;
+    if (prefill && !booking.elements.namedItem(field).value) booking.elements.namedItem(field).value = value;
+  }
+}
+async function loadProfile(user) {
+  contactUser = user;
+  $('save-contact').disabled = true;
+  $('contact-status').textContent = '';
+  renderProfile(user);
+  if (!user) return;
+  try {
+    const details = isPreview ? exampleContact : await rpc('contact');
+    if (contactUser !== user) return;
+    renderProfile(user, details, true);
+    $('save-contact').disabled = false;
+  } catch {
+    if (contactUser === user) $('contact-status').textContent = 'No se pudo cargar la ficha. Recarga la página para volver a intentarlo.';
+  }
+}
+contactForm.onsubmit = async event => {
+  event.preventDefault();
+  const user = contactUser;
+  if (!user || $('save-contact').disabled) return;
+  const values = new FormData(contactForm);
+  const details = Object.fromEntries(contactFields.map(key => [key, values.get(key).trim()]));
+  const save = $('save-contact');
+  const previousBooking = Object.fromEntries(contactFields.map(key => [key, booking.elements.namedItem(key).value]));
+  save.disabled = true;
+  for (const field of contactFields) contactForm.elements.namedItem(field).readOnly = true;
+  $('contact-status').textContent = 'Guardando…';
+  try {
+    const saved = isPreview ? (exampleContact = details) : await rpc('contact', { p_details: details });
+    if (contactUser !== user) return;
+    renderProfile(user, saved);
+    for (const field of contactFields) {
+      const input = booking.elements.namedItem(field);
+      if (input.value === previousBooking[field]) input.value = saved[field] || '';
+    }
+    $('contact-status').textContent = isPreview ? 'Cambios guardados en esta sesión de ejemplo.' : 'Ficha actualizada.';
+  } catch {
+    if (contactUser === user) $('contact-status').textContent = 'No se pudieron guardar los cambios. Revisa los datos e inténtalo de nuevo.';
+  } finally {
+    if (contactUser === user) save.disabled = false;
+    for (const field of contactFields) contactForm.elements.namedItem(field).readOnly = false;
+  }
+};
+let packs = [];
+const demoPacks = [
+  { id: '1', name: '1 hora', minutes: 60, amount: 20 },
+  { id: '3', name: 'Pack de 3 horas', minutes: 180, amount: 57 },
+  { id: '6', name: 'Pack de 6 horas', minutes: 360, amount: 108 },
+  { id: '12', name: 'Pack de 12 horas', minutes: 720, amount: 204 }
+];
+const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' });
+const selectedPack = () => packs.find(pack => pack.id === booking.pack.value);
+const recipient = $('recipient');
+function updateRecipient() {
+  const other = recipient.value === 'other';
+  $('beneficiary-field').hidden = !other;
+  booking.beneficiary.required = other;
+  if (!other) booking.beneficiary.value = '';
+}
+recipient.onchange = updateRecipient;
+
+function message(text, error = false) {
+  $('status').textContent = text;
+  $('status').classList.toggle('error', error);
+}
+async function rpc(name, params) {
+  if (isPreview) {
+    if (name === 'settings') return { enabled: true, methods: ['Bizum', 'Efectivo'], packs: demoPacks };
+    if (name === 'mine') return examples;
+    if (name === 'availability') {
+      return Object.fromEntries(Array.from({ length: 31 }, (_, i) => addDays(params.p_first, i))
+        .filter((day, i) => i % 3 === 0 && day <= addDays(madridToday(), 90))
+        .map(day => [day, ['10:00', '12:30', '17:00']]));
+    }
+    if (name === 'book_tariff') {
+      examples.push({ day: params.p_day, start: params.p_start, minutes: params.p_expected_minutes,
+        pack: params.p_expected_minutes / 60, status: 'pending' });
+      return;
+    }
+  }
+  const { data, error } = await portal.rpc('umec2_web_' + name, params);
+  if (error) throw error;
+  return data;
+}
+function choices(select, values, label = String) {
+  select.replaceChildren(...values.map(value => new Option(label(value), value)));
+}
+function showHours() {
+  const hours = available[booking.day.value] || [];
+  choices(booking.start, hours);
+  if (!hours.length) booking.start.add(new Option('Selecciona primero un día disponible', ''));
+  booking.start.disabled = !hours.length;
+  $('visit-details').hidden = !hours.length;
+  $('request').disabled = !hours.length;
+}
+function drawCalendar() {
+  const end = addDays(moveMonth(first, 1), -1);
+  const days = Object.keys(available).filter(day => day >= first && day <= end && available[day]?.length);
+  if (!days.includes(booking.day.value)) booking.day.value = '';
+  const header = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map(label => {
+    const cell = document.createElement('span');
+    cell.textContent = label;
+    return cell;
+  });
+  const weekday = (new Date(first + 'T12:00:00Z').getUTCDay() + 6) % 7;
+  const cells = Array.from({ length: weekday }, () => document.createElement('span'));
+  for (let day = first; day <= end; day = addDays(day, 1)) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.day = day;
+    button.textContent = day.slice(8);
+    button.disabled = !days.includes(day);
+    button.setAttribute('aria-label', pretty(day) + (button.disabled ? ', sin horario' : ', disponible'));
+    button.setAttribute('aria-pressed', String(day === booking.day.value));
+    button.onclick = () => {
+      booking.day.value = day;
+      showHours();
+      for (const cell of $('calendar').querySelectorAll('button')) {
+        cell.setAttribute('aria-pressed', String(cell === button));
+      }
+    };
+    cells.push(button);
+  }
+  $('calendar').replaceChildren(...header, ...cells);
+  showHours();
+  const label = monthLabel.format(new Date(first + 'T12:00:00Z'));
+  $('range').textContent = label[0].toUpperCase() + label.slice(1);
+  $('prev').disabled = first <= monthStart(madridToday());
+  $('next').disabled = moveMonth(first, 1) > addDays(madridToday(), 90);
+}
+
+async function loadCalendar(announce = true) {
+  const version = ++generation;
+  available = {};
+  drawCalendar();
+  try {
+    const data = await rpc('availability', { p_first: first < madridToday() ? madridToday() : first, p_minutes: selectedPack().minutes });
+    if (version !== generation) return;
+    available = data;
+    drawCalendar();
+    if (announce) message(Object.keys(data).some(day => monthStart(day) === first && data[day]?.length) ? '' : 'Este mes no tiene horarios libres para ese pack.');
+  } catch {
+    if (version === generation) message('No se pudo consultar la disponibilidad. Recarga la página para volver a intentarlo.', true);
+  }
+}
+function showDuration() {
+  const hours = selectedPack()?.minutes / 60;
+  $('visit-duration').textContent = hours ? hours + (hours === 1 ? ' hora' : ' horas') : '—';
+}
+async function history() {
+  const account = currentUser;
+  try {
+    const items = await rpc('mine');
+    if (account !== currentUser) return;
+    $('items').replaceChildren();
+    $('upcoming').replaceChildren();
+    for (const item of items) {
+      const row = document.createElement('li');
+      row.textContent = pretty(item.day) + ' a las ' + item.start + ' · ' + item.minutes +
+        ' min · Pack ' + item.pack + ' h · ' + (labels[item.status] || 'En revisión');
+      const inProgress = ['pending', 'pendiente', 'asignado', 'en curso'].includes(item.status);
+      $(inProgress && item.day >= madridToday() ? 'upcoming' : 'items').append(row);
+    }
+    $('history-note').textContent = items.length ? '' : 'Aún no tienes solicitudes.';
+  } catch {
+    if (account === currentUser) $('history-note').textContent = 'No se pudo cargar el historial. Vuelve a intentarlo.';
+  }
+}
+async function showSession(session) {
+  currentUser = session?.user.id || null;
+  generation++;
+  $('auth').hidden = Boolean(session);
+  $('account').hidden = !session;
+  $('items').replaceChildren();
+  $('upcoming').replaceChildren();
+  $('history-note').textContent = '';
+  booking.hidden = true;
+  if (!session) {
+    loadProfile(null);
+    booking.reset();
+    updateRecipient();
+    attempt = null;
+    message(callbackError ? 'El enlace de acceso ha caducado o se ha cancelado. Solicita otro.' : '', callbackError);
+    return;
+  }
+  loadProfile(session.user);
+  booking.full_name.value ||= session.user.user_metadata?.full_name || '';
+
+  first = monthStart(madridToday());
+  showPanel('reserve');
+  const account = currentUser;
+  const historyLoad = history();
+  try {
+    const settings = await rpc('settings');
+    if (account !== currentUser) return;
+    if (!settings.enabled || !settings.methods.length) {
+      message('La agenda online está cerrada. Puedes contactar con nosotros desde la página principal.');
+      return;
+    }
+    packs = settings.packs || [];
+    if (!packs.length) {
+      message('No hay packs disponibles para reservar online.');
+      return;
+    }
+    const requestedHours = Number(callbacks.get('pack'));
+    booking.pack.replaceChildren(...packs.map(pack =>
+      new Option(pack.name + ' · ' + euros.format(pack.amount), pack.id)));
+    const requested = packs.find(pack => pack.minutes === requestedHours * 60);
+    if (requested) booking.pack.value = requested.id;
+    showDuration();
+    choices(booking.method, settings.methods);
+    booking.hidden = false;
+    await loadCalendar();
+  } catch {
+    if (account === currentUser) message('No se pudo abrir la agenda. Recarga la página para volver a intentarlo.', true);
+  } finally {
+    await historyLoad;
+  }
+}
+async function authAction(button, action, success) {
+  button.disabled = true;
+  message('');
+  try {
+    const { error } = await action();
+    if (error) throw error;
+    if (success) message(success);
+  } catch {
+    message('No se pudo completar el acceso. Comprueba los datos o inténtalo más tarde.', true);
+  } finally {
+    button.disabled = false;
+  }
+}
+$('google').onclick = event => authAction(event.currentTarget,
+  () => portal.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: callback } }));
+$('email-form').onsubmit = event => {
+  event.preventDefault();
+  const email = new FormData(event.currentTarget).get('email').trim();
+  authAction(event.submitter, () => portal.auth.signInWithOtp({ email, options: { emailRedirectTo: callback } }),
+    'Revisa tu correo y abre el enlace desde este mismo navegador.');
+};
+$('logout').onclick = event => authAction(event.currentTarget, async () => {
+  message('');
+  return portal.auth.signOut({ scope: 'local' });
+});
+$('reload-history').onclick = history;
+booking.pack.onchange = () => { showDuration(); loadCalendar(); };
+$('prev').onclick = () => { first = moveMonth(first, -1); loadCalendar(); };
+$('next').onclick = () => { first = moveMonth(first, 1); loadCalendar(); };
+booking.onsubmit = async event => {
+  event.preventDefault();
+  const fields = booking.querySelector('fieldset');
+  const account = currentUser;
+  const values = Object.fromEntries(new FormData(booking));
+  const pack = selectedPack();
+  if (!pack) return;
+  const signature = JSON.stringify([values, pack.amount, pack.minutes]);
+  if (attempt?.signature !== signature) attempt = { signature, id: crypto.randomUUID() };
+  fields.disabled = true;
+  $('logout').disabled = true;
+  message('Enviando solicitud…');
+  try {
+    await rpc('book_tariff', {
+      p_request: attempt.id, p_tariff: pack.id, p_expected_amount: pack.amount,
+      p_expected_minutes: pack.minutes,
+      p_day: values.day, p_start: values.start, p_method: values.method, p_name: values.full_name,
+      p_phone: values.phone, p_address: values.address, p_zone: values.zone, p_beneficiary: values.beneficiary
+    });
+    if (account !== currentUser) return;
+    attempt = null;
+    message(isPreview ? 'Solicitud de ejemplo registrada en esta pestaña.' : 'Reserva pendiente de confirmación.');
+    $('status').scrollIntoView({ block: 'nearest' });
+    await history();
+  } catch (error) {
+    if (account !== currentUser) return;
+    message(error.code === 'P0001' ? error.message : 'No se pudo enviar la solicitud. Puedes volver a intentarlo.', true);
+    $('status').scrollIntoView({ block: 'nearest' });
+    if (error.code === 'P0001') await loadCalendar(false);
+  } finally {
+    fields.disabled = false;
+    $('logout').disabled = false;
+  }
+};
+if (isPreview) {
+  $('preview').hidden = false;
+  message('');
+  $('logout').hidden = true;
+  $('delete-account').disabled = false;
+  $('delete-note').textContent = 'Puedes probar la eliminación con los datos de ejemplo.';
+  const dialog = $('delete-dialog');
+  $('delete-account').onclick = () => {
+    dialog.returnValue = '';
+    dialog.showModal();
+  };
+  dialog.onclose = async () => {
+    if (dialog.returnValue !== 'delete' || !currentUser) return;
+    examples.length = 0;
+    exampleContact = {};
+    await showSession(null);
+    $('auth').hidden = true;
+    message('Cuenta y solicitudes de ejemplo eliminadas.');
+  };
+  showSession({ user: { id: 'preview', email: 'cliente@ejemplo.es', user_metadata: { full_name: 'Cliente de ejemplo' } } });
+} else portal.auth.onAuthStateChange((event, session) => {
+  if (event === 'INITIAL_SESSION' || event === 'SIGNED_OUT' ||
+      (event === 'SIGNED_IN' && session?.user.id !== currentUser)) {
+    setTimeout(() => showSession(session), 0);
+  }
+});
+
+</script>
 </body>
 </html>
