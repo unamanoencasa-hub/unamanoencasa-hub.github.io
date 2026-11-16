@@ -54,6 +54,84 @@ section{padding:72px 0}.section-head{text-align:center;max-width:700px;margin:0 
   .hero .eyebrow{font-size:.72rem}
   .price-grid{grid-template-columns:1fr}
 }
+
+/* Responsive refinement for the public website. */
+@media(max-width:600px){
+  .wrap{width:calc(100% - 32px)}
+  .nav{min-height:68px;gap:10px}
+  .brand{min-width:0;gap:8px;font-size:1rem}
+  .brand small{font-size:.72rem;line-height:1.3}
+  .logo{width:70px;height:48px}
+  .menu{min-width:44px;min-height:44px;flex-shrink:0;padding:7px 10px}
+  .navlinks{top:100%;left:16px;right:16px;max-height:calc(100dvh - 90px);overflow-y:auto}
+  .navlinks a:not(.btn){display:flex;align-items:center;min-height:44px}
+  section[id]{scroll-margin-top:84px}
+  .hero{padding:28px 0 32px}
+  .hero-grid{gap:22px}
+  .eyebrow{max-width:100%;font-size:.72rem;line-height:1.4;letter-spacing:.025em;padding:6px 10px}
+  .hero h1{font-size:clamp(2rem,8.5vw,2.75rem);line-height:1.08;margin:16px 0;letter-spacing:-.035em}
+  .hero p{font-size:1rem;line-height:1.6;margin:14px 0}
+  .hero-actions{gap:10px;margin-top:20px}
+  .btn{min-height:44px;padding:10px 14px;font-size:.9rem;line-height:1.35}
+  .hero-actions .booking-cta{margin-top:0}
+  .booking-cta-copy strong,.nav-booking-cta .booking-cta-copy strong{font-size:.9rem}
+  .hero-note{font-size:.8rem;line-height:1.6;margin-top:16px}
+  .hero-art{min-height:250px;border-radius:22px}
+  .art-card{font-size:.76rem;line-height:1.35;padding:8px 10px;border-radius:14px;max-width:48%}
+  .art-card span{font-size:.72rem;line-height:1.4;margin-top:2px}
+  .art-card.two{top:34px;right:10px}
+  .art-card.one{left:10px;bottom:16px}
+  section{padding:36px 0}
+  .section-head{margin-bottom:24px}
+  .section-head h2,.about-copy h2{font-size:clamp(1.65rem,6.5vw,2rem);line-height:1.16;margin:10px 0 14px}
+  .section-head p,.about-copy p{font-size:.95rem;line-height:1.6}
+  .services-grid{grid-template-columns:1fr;gap:12px}
+  .service{padding:18px;border-radius:18px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:6px 12px}
+  .service-icon{width:40px;height:40px;grid-row:1 / 3;font-size:1.3rem;margin:0;border-radius:12px}
+  .service h3{font-size:1rem;line-height:1.3;margin:0}
+  .service p{font-size:.9rem;line-height:1.55}
+  .price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 12px}
+  .price-card{min-width:0;padding:20px 14px 16px;border-radius:18px}
+  .price-card .hours{font-size:.78rem;letter-spacing:.025em}
+  .price{font-size:2.1rem;line-height:1.2;margin-top:10px}
+  .perhour{font-size:.87rem;margin:6px 0}
+  .price-card p{font-size:.88rem;line-height:1.55}
+  .price-card .btn{font-size:.85rem;padding:10px 8px}
+  .ribbon{font-size:.62rem;padding:5px 8px;max-width:calc(100% - 10px)}
+  .specials,.contact-grid{gap:14px}
+  .panel{padding:16px 18px;border-radius:18px}
+  .mobile-details>summary{min-height:44px;gap:12px;font-size:.95rem}
+  .special-row{gap:6px;flex-direction:column;align-items:flex-start;padding:12px 0}
+  .special-row strong,.conditions strong{font-size:.92rem}
+  .special-row span,.conditions span{font-size:.88rem;line-height:1.55}
+  .special-row b{align-self:flex-start;font-size:.9rem}
+  .conditions li{gap:10px;margin:13px 0}
+  .conditions li>div:last-child{min-width:0}
+  .about-grid{gap:24px}
+  .about-art{width:min(100%,320px);min-height:0;padding:8px;border-radius:22px}
+  .chips{gap:7px;margin-top:16px}
+  .chip{font-size:.8rem;padding:6px 10px}
+  .contact-card{padding:20px;border-radius:20px}
+  .contact-card h3{font-size:1rem;line-height:1.35;gap:10px;margin-bottom:16px}
+  .contact-icon{width:40px;height:40px;flex-basis:40px;border-radius:12px}
+  .contact-big{font-size:clamp(1.7rem,7.4vw,2.2rem);margin:4px 0 16px}
+  .contact-card p{font-size:.93rem;line-height:1.6}
+  .contact .btn{width:100%}
+  footer{padding:26px 16px;font-size:.85rem}
+  footer .footer-brand{font-size:.83rem;letter-spacing:.05em}
+  footer .footer-mark{flex-shrink:0}
+  .ai-disclosure{font-size:.78rem;line-height:1.6;margin-top:16px}
+}
+@media(max-width:360px){
+  .brand{font-size:.88rem;gap:6px}
+  .brand small{font-size:.66rem}
+  .logo{width:58px;height:44px}
+  .price-grid{grid-template-columns:1fr}
+  .ribbon{font-size:.68rem}
+  .hero-actions>.btn:first-child{width:100%}
+  .art-card{padding:7px 8px;font-size:.72rem}
+  .art-card span{font-size:.68rem}
+}
 </style>
 </head>
 <body>
@@ -150,7 +228,7 @@ section{padding:72px 0}.section-head{text-align:center;max-width:700px;margin:0 
 </main>
 <footer><div class="footer-brand"><span class="footer-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/><path d="M12 13s-3-1.8-3-3.5A1.8 1.8 0 0 1 12 8.4a1.8 1.8 0 0 1 3 1.1C15 11.2 12 13 12 13Z"/></svg></span>UNA MANO EN CASA</div><p class="footer-tagline">Más que un servicio, un apoyo real.</p><p class="footer-details">Pequeños gestos, grandes diferencias · 624 249 294</p><p class="ai-disclosure">Algunas imágenes de esta web han sido creadas con inteligencia artificial y tienen un fin ilustrativo. No representan necesariamente a personas, clientes ni servicios reales.</p></footer>
 <script>
-const syncMobileDetails=()=>document.querySelectorAll(".mobile-details").forEach(item=>{if(matchMedia("(max-width: 600px)").matches)item.removeAttribute("open");else item.setAttribute("open","")});syncMobileDetails();addEventListener("resize",syncMobileDetails);
+const mobileDetailsQuery=matchMedia("(max-width: 600px)");const syncMobileDetails=()=>document.querySelectorAll(".mobile-details").forEach(item=>{item.open=!mobileDetailsQuery.matches});syncMobileDetails();mobileDetailsQuery.addEventListener("change",syncMobileDetails);
 document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));
 </script>
 </body>
