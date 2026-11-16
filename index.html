@@ -32,6 +32,28 @@ section{padding:72px 0}.section-head{text-align:center;max-width:700px;margin:0 
 .booking-cta::after{content:"";position:absolute;inset:-3px;border:2px solid #119483;border-radius:inherit;pointer-events:none;opacity:.74}
 @media(prefers-reduced-motion:no-preference){.booking-cta::after{animation:booking-halo 1.5s ease-out infinite}}
 @keyframes booking-halo{0%,100%{opacity:.74;transform:translateZ(0)}65%{opacity:.16;transform:scale(1.018,1.12)}}
+
+/* Mobile layout: keep decorative circles at the image edges. */
+@media(max-width:600px){
+  .hero-art:before{width:110px;height:110px;top:-55px;right:-45px;pointer-events:none}
+  .hero-art:after{width:90px;height:90px;bottom:-48px;left:-35px;pointer-events:none}
+  .hero{padding:34px 0 32px}
+  section{padding:40px 0}
+  .hero-grid>*,.about-grid>*,.contact-grid>*{min-width:0}
+  .hero-note{flex-wrap:wrap;font-size:.82rem}
+  .hero-actions .btn{max-width:100%;text-align:center}
+  .contact-card{padding:22px 18px}
+  .special-row{flex-wrap:wrap}
+  .special-row b{white-space:normal}
+}
+@media(max-width:360px){
+  .brand{gap:6px;font-size:.9rem}
+  .logo{width:64px;height:46px}
+  .nav{gap:8px}
+  .hero h1{font-size:2.2rem}
+  .hero .eyebrow{font-size:.72rem}
+  .price-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
