@@ -125,6 +125,17 @@ main.wrap {padding-top:clamp(24px,5vw,44px)}
 .access-privacy {display:flex;align-items:flex-start;justify-content:center;gap:7px;color:#426a79;font-size:.78rem;line-height:1.45}
 .access-privacy svg {width:17px;height:17px;flex:none;margin-top:2px;color:#08785f}
 @media (max-width:350px) {.portal-header a {font-size:.87rem}.portal-header img {width:46px}.portal-header #logout {padding-inline:8px}}
+
+/* Keep the sign-in privacy notice close to the form on mobile. */
+@media(max-width:600px){
+  body{min-height:100svh}
+  body:has(#auth:not([hidden])) main.wrap{padding-top:18px;padding-bottom:12px}
+  body:has(#auth:not([hidden])) #auth{margin:12px 0;padding:18px}
+  body:has(#auth:not([hidden])) #auth .auth-intro{margin-bottom:14px}
+  body:has(#auth:not([hidden])) .auth-divider{margin:12px 0}
+  body:has(#auth:not([hidden])) .contact-link{margin:10px 0}
+  body:has(#auth:not([hidden])) .portal-footer{margin-top:0;padding:10px 0 max(12px,env(safe-area-inset-bottom))}
+}
 </style>
 </head>
 <body>
