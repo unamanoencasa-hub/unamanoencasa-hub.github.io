@@ -102,7 +102,8 @@ body {background:radial-gradient(ellipse at 95% 0%,#d8eee3 0%,transparent 48%),l
 .calendar-key span {display:inline-flex;align-items:center;gap:5px}
 .calendar-key i {width:9px;height:9px;border-radius:50%;background:#e0f4e7;border:1px solid #70aa97}
 .calendar-key span + span i {background:#fbe9e7;border-color:#bd7770}
-body {min-height:100vh}
+body {min-height:100vh;display:flex;flex-direction:column}
+.portal-footer {margin-top:auto;border-top:1px solid #d3e5df;background:#f5faf8;padding:10px 0}
 .portal-header {display:flex;align-items:center;justify-content:space-between;gap:12px}
 .portal-header a {min-height:66px;gap:8px}
 .portal-header #logout {min-height:44px;padding:6px 12px;border-radius:10px;font-size:.82rem;white-space:nowrap}
@@ -121,8 +122,7 @@ main.wrap {padding-top:clamp(24px,5vw,44px)}
 .auth-divider::before,.auth-divider::after {content:"";height:1px;background:#dcebe6;flex:1}
 #email-form label {margin:0 0 10px}
 #email-form input {min-height:44px}
-.access-privacy {display:flex;align-items:flex-start;gap:9px;width:min(100%,470px);padding:12px 14px;border:1px solid #d3e5df;border-radius:12px;background:#f5faf8;color:#426a79;font-size:.84rem}
-.access-privacy p {margin:0}
+.access-privacy {display:flex;align-items:flex-start;justify-content:center;gap:7px;color:#426a79;font-size:.78rem;line-height:1.45}
 .access-privacy svg {width:17px;height:17px;flex:none;margin-top:2px;color:#08785f}
 @media (max-width:350px) {.portal-header a {font-size:.87rem}.portal-header img {width:46px}.portal-header #logout {padding-inline:8px}}
 </style>
@@ -153,10 +153,6 @@ main.wrap {padding-top:clamp(24px,5vw,44px)}
     <button class="primary" type="submit">Enviar enlace de acceso</button>
   </form>
 </section>
-<aside class="access-privacy" id="access-privacy" aria-label="Seguridad del acceso" hidden>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg>
-  <p><strong>Acceso por HTTPS.</strong> Nunca te pedimos tu contraseña. Puedes entrar con Google o con un enlace que enviamos a tu correo.</p>
-</aside>
 <div id="account" hidden>
   <nav class="portal-nav" aria-label="Portal de cliente">
     <button type="button" data-panel="reserve" aria-controls="reserve" aria-current="true"><span aria-hidden="true">▦</span>Reservar</button>
@@ -242,6 +238,9 @@ main.wrap {padding-top:clamp(24px,5vw,44px)}
 </dialog>
 <p class="contact-link"><a href="./index.html#contacto">Contactar con Una mano en casa</a></p>
 </main>
+<footer class="portal-footer">
+  <p class="wrap access-privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></svg><span><strong>Acceso protegido.</strong> Conexión cifrada (HTTPS). Entra con Google o con un enlace por correo. En este portal nunca te pedimos tu contraseña.</span></p>
+</footer>
 <script type="module">
 const isPreview = location.hostname !== "unamanoencasa-hub.github.io";
 const createClient = isPreview ? null : (await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/+esm')).createClient;
@@ -499,7 +498,6 @@ async function showSession(session) {
   currentUser = session?.user.id || null;
   generation++;
   $('auth').hidden = Boolean(session);
-  $('access-privacy').hidden = Boolean(session);
   $('logout').hidden = !session;
   $('account').hidden = !session;
   $('items').replaceChildren();
@@ -638,7 +636,6 @@ if (isPreview) {
     exampleContact = {};
     await showSession(null);
     $('auth').hidden = true;
-    $('access-privacy').hidden = true;
     message('Cuenta y solicitudes de ejemplo eliminadas.');
   };
   if (callbacks.get('vista') === 'acceso') {
