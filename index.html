@@ -487,12 +487,56 @@ main > section:has(.about-grid) {
     radial-gradient(circle 95px at 102% 27%,rgba(47,215,192,0.21) 99%,transparent 100%)}
 }
 </style>
+
+<style id="revision-33-cita-movil">
+/* Botón adicional de reservas visible en la cabecera móvil, al lado del menú. */
+.mobile-nav-actions{display:none}
+@keyframes umec-cita-halo-visible{
+  0%,100%{box-shadow:0 4px 12px rgba(0,78,107,.17),0 0 0 0 rgba(10,119,169,.32),0 0 12px rgba(48,171,206,.12)}
+  56%{box-shadow:0 5px 14px rgba(0,78,107,.22),0 0 0 6px rgba(20,151,191,.18),0 0 21px 4px rgba(52,177,219,.36)}
+  84%{box-shadow:0 4px 12px rgba(0,78,107,.18),0 0 0 9px rgba(20,151,191,0),0 0 12px rgba(48,171,206,.1)}
+}
+@media(min-width:601px){header .navlinks a.nav-booking-cta{animation:umec-cita-halo-visible 3.2s ease-in-out infinite}}
+@media(max-width:600px){
+  header .nav{gap:7px;justify-content:space-between}
+  header .brand{min-width:0;flex:1 1 auto;gap:5px;font-size:clamp(.73rem,3.35vw,.92rem)}
+  header .brand .logo{width:clamp(37px,11vw,55px);height:clamp(36px,11vw,48px);flex-shrink:0}
+  header .brand small{font-size:clamp(.48rem,1.8vw,.62rem);padding:3px 5px!important;line-height:1.15;white-space:normal}
+  .mobile-nav-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+  .mobile-booking-cta{display:inline-flex;align-items:center;justify-content:center;gap:5px;
+    white-space:nowrap;text-decoration:none;border-radius:999px;padding:9px 11px;min-height:39px;
+    background:#004e6b;color:#fff;font-size:.72rem;font-weight:800;line-height:1;
+    animation:umec-cita-halo-visible 3.2s ease-in-out infinite}
+  .mobile-booking-cta svg{width:15px;height:15px;flex-shrink:0}
+  .mobile-booking-cta:focus-visible{outline:3px solid #20c5b1;outline-offset:4px}
+  .mobile-nav-actions .menu{display:block;min-width:39px;min-height:39px;padding:4px 7px;font-size:1.25rem}
+}
+@media(max-width:360px){
+  header .nav{gap:4px}
+  .mobile-nav-actions{gap:4px}
+  .mobile-booking-cta{font-size:.67rem;padding:8px 8px;gap:3px}
+  .mobile-booking-cta svg{width:13px;height:13px}
+  header .brand .logo{width:34px;height:37px}
+  header .brand{font-size:.68rem;gap:3px}
+  header .brand small{font-size:.46rem;padding:2px 3px!important}
+  .mobile-nav-actions .menu{min-width:36px;min-height:36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .mobile-booking-cta,header .navlinks a.nav-booking-cta{animation:none!important;box-shadow:0 0 0 3px rgba(20,151,191,.25)}
+}
+</style>
 </head>
 <body>
 <header>
 <div class="wrap nav">
 <a aria-label="Una mano en casa, inicio" class="brand" href="#inicio"><img alt="Logo Una Mano en Casa" class="logo" src="logo-una-mano.png"/><span>UNA MANO<br/>EN CASA<small>Ayuda sencilla para el día a día</small></span></a>
+<div class="mobile-nav-actions">
+<a aria-label="Solicitar cita" class="mobile-booking-cta" href="./citas.html">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>
+<span>Solicitar cita</span>
+</a>
 <button aria-label="Abrir menú" class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+</div>
 <nav aria-label="Navegación principal" class="navlinks">
 <a href="#servicios">Servicios</a><a href="#tarifas">Tarifas</a><a href="#condiciones">Condiciones</a><a class="btn booking-cta nav-booking-cta" href="./citas.html">
 <svg aria-hidden="true" class="booking-cta-icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18m-13 4h.01m4 0h.01m4 0h.01m-8 3h.01m4 0h.01m4 0h.01"></path></svg>
@@ -575,7 +619,7 @@ main > section:has(.about-grid) {
 </div>
 </section>
 </main>
-<footer><div class="footer-brand"><img alt="Logo de Una Mano en Casa" class="footer-logo" src="logo-una-mano.png"/>UNA MANO EN CASA</div><p class="footer-tagline">Más que un servicio, un apoyo real.</p><p class="footer-details">Pequeños gestos, grandes diferencias · 624 249 294</p><p class="ai-disclosure">Algunas imágenes de esta web han sido creadas con inteligencia artificial y tienen un fin ilustrativo. No representan necesariamente a personas, clientes ni servicios reales.</p></footer>
+<footer><div class="footer-brand"><img alt="Logo de Una Mano en Casa" class="footer-logo" src="data:image/jpeg;base64,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"/>UNA MANO EN CASA</div><p class="footer-tagline">Más que un servicio, un apoyo real.</p><p class="footer-details">Pequeños gestos, grandes diferencias · 624 249 294</p><p class="ai-disclosure">Algunas imágenes de esta web han sido creadas con inteligencia artificial y tienen un fin ilustrativo. No representan necesariamente a personas, clientes ni servicios reales.</p></footer>
 <script>
 const mobileDetailsQuery=matchMedia("(max-width: 600px)");const syncMobileDetails=()=>document.querySelectorAll(".mobile-details").forEach(item=>{item.open=!mobileDetailsQuery.matches});syncMobileDetails();mobileDetailsQuery.addEventListener("change",syncMobileDetails);
 document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));
