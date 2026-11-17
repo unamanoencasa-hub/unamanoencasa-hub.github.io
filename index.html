@@ -1,14 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#07516a">
-<meta name="description" content="Una mano en casa: ayuda cotidiana, recados y acompañamiento en Elche, Crevillente, Aspe y pedanías.">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#07516a" name="theme-color"/>
+<meta content="Una mano en casa: ayuda cotidiana, recados y acompañamiento en Elche, Crevillente, Aspe y pedanías." name="description"/>
 <title>Una mano en casa | Tu apoyo en el día a día</title>
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
-<link rel="manifest" href="manifest.json">
+<link href="icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="icon-192.png" rel="apple-touch-icon"/>
+<link href="manifest.json" rel="manifest"/>
 <style>
 :root{--navy:#07516a;--teal:#078b72;--green:#dff0d4;--blue:#e5f5fc;--cream:#fffdf7;--ink:#164b60;--muted:#557583;--white:#fff;--shadow:0 14px 40px rgba(7,81,106,.10)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.55}a{color:inherit}.wrap{width:min(1280px,calc(100% - 48px));margin:auto}
@@ -132,105 +133,470 @@ section{padding:72px 0}.section-head{text-align:center;max-width:700px;margin:0 
   .art-card{padding:7px 8px;font-size:.72rem}
   .art-card span{font-size:.68rem}
 }
+
+/* VISUAL REDESIGN V3: reference-inspired layout; all business logic remains unchanged. */
+:root{--navy:#053d64;--teal:#009a69;--ink:#062e62;--muted:#3b6072;--cream:#fff;--blue:#e8f7f7;--shadow:0 12px 28px rgba(5,48,76,.11)}
+body{background:#fff;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
+.wrap{width:min(1360px,calc(100% - 72px))}
+header{background:#fff;box-shadow:none;position:sticky;z-index:20}
+header:after{height:4px;background:linear-gradient(90deg,#00a878 0%,#00b44b 60%,#0a9b78 100%)}
+.nav{min-height:108px;gap:24px}
+.brand{gap:12px;align-self:stretch;position:relative;min-width:380px;line-height:.93;font-size:1.7rem;font-weight:950;letter-spacing:-.045em;color:#06377a}
+.brand .logo{width:114px;height:100px;object-fit:contain}
+.brand small{position:absolute;bottom:-15px;left:116px;z-index:3;white-space:nowrap;background:#d5f2e4;border-radius:50px;padding:8px 18px;color:#073d49;font-size:.76rem;letter-spacing:0;font-style:italic;box-shadow:0 0 0 7px white}
+.navlinks{gap:42px}
+.navlinks a:not(.btn){font-size:1.04rem;font-weight:850;color:#052f69}
+.navlinks .nav-booking-cta{padding:13px 23px;border-radius:999px;min-height:56px;box-shadow:0 8px 20px #07516a24}
+.btn.booking-cta{border-radius:999px;background:#004e6b;box-shadow:0 8px 22px #004e6b20;display:inline-flex;text-align:center;gap:10px;padding:12px 20px;min-height:50px}
+.booking-cta::after{display:none}
+.nav-booking-cta .booking-cta-copy strong{font-size:1.02rem}
+.hero{position:relative;padding:0;overflow:hidden;background:#fff}
+.hero-grid{position:relative;display:grid;grid-template-columns:49% 51%;gap:0;min-height:470px;align-items:center;width:100%;max-width:none;padding-left:max(5.5vw,calc((100vw - 1360px)/2));}
+.hero-grid>div:first-child{position:relative;z-index:3;padding:48px 20px 78px 0}
+.hero h1{font-size:clamp(2.8rem,4.25vw,4.6rem);line-height:1.05;letter-spacing:-.048em;color:#07436b;margin:15px 0 14px;font-weight:950}
+.hero h1 em{color:#009a65}
+.eyebrow{background:#d7f1e2;color:#073a67;font-weight:900;border-radius:99px;letter-spacing:0;padding:7px 16px;font-size:.89rem}
+.hero p{font-size:clamp(1.02rem,1.45vw,1.22rem);line-height:1.48;color:#0b3774;margin:0;max-width:610px}
+.hero-actions{gap:10px;margin-top:23px}
+.hero-actions>.btn:first-child{background:#009d66}
+.hero-actions>.btn.secondary{background:#fff;color:#053d77;border:1.5px solid #00a86a;box-shadow:none}
+.hero-actions>.btn.secondary:hover{background:#e9f9f1}
+.hero-note{color:#063778;font-weight:800;flex-wrap:wrap;margin-top:16px}
+.hero-art{align-self:stretch;min-height:470px;border-radius:0;box-shadow:none;background:#e5f4ee;overflow:hidden}
+.hero-photo{opacity:1;mask-image:none;object-fit:cover;object-position:center 28%;width:100%;height:100%}
+.hero-art:before,.hero-art:after,.art-card{display:none}
+.hero:after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:92px;z-index:4;pointer-events:none;background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 63 C270 77 440 100 650 90 C900 80 1100 2 1260 22 C1350 30 1400 55 1440 61 L1440 100 L0 100 Z' fill='%2308b33e'/%3E%3Cpath d='M0 53 C270 67 440 91 650 80 C900 70 1100 -10 1260 12 C1350 20 1400 45 1440 51 L1440 100 L0 100 Z' fill='%23ffffff'/%3E%3C/svg%3E") center bottom/100% 100% no-repeat}
+section{padding:66px 0}
+#servicios{position:relative;padding-top:12px;padding-bottom:90px;background:#fff;overflow:hidden}
+#servicios:after{content:"";position:absolute;bottom:0;left:0;right:0;height:48px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath d='M0 24 C290 -40 500 92 800 54 S1200 -8 1440 20 L1440 70 H0 Z' fill='%23049e86'/%3E%3Cpath d='M0 43 C290 -22 500 109 800 70 S1200 10 1440 39 L1440 70 H0 Z' fill='%23f0f8f7'/%3E%3C/svg%3E") center bottom/100% 100% no-repeat}
+.section-head{max-width:850px;margin-bottom:24px}
+.section-head h2{font-size:clamp(2rem,3.2vw,3.05rem);font-weight:950;color:#063f70;line-height:1.08;margin:11px 0}
+.section-head p{font-size:1.04rem;color:#093778}
+.services-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.service{min-height:142px;display:grid;grid-template-columns:7px 100px minmax(0,1fr);column-gap:14px;align-items:center;grid-template-rows:auto auto;padding:19px 18px 19px 17px;border:0;border-radius:23px;box-shadow:0 7px 23px #053d6420;position:relative}
+.service:before{content:"";grid-column:1;grid-row:1/3;align-self:stretch;background:#08bb46;border-radius:99px;width:6px}
+.service-icon,.service:nth-child(2n) .service-icon{grid-column:2;grid-row:1/3;width:96px;height:94px;background:transparent;margin:0;color:#028c9c;border-radius:0}
+.service:nth-child(3n+1) .service-icon{color:#085477}
+.service:nth-child(3n+2) .service-icon{color:#00a747}
+.service-icon svg{width:88px;height:88px;stroke-width:1.7}
+.service h3{grid-column:3;grid-row:1;font-size:1.12rem;line-height:1.1;font-weight:900;margin:0 0 4px;color:#062d72;align-self:end}
+.service p{grid-column:3;grid-row:2;font-size:.87rem;line-height:1.3;color:#103a76;align-self:start}
+.pricing{background:#f0f8f7}
+.price-card,.panel,.contact-card{box-shadow:0 10px 30px #053d6415}
+.price-card{border-radius:24px;border:1px solid #cce7de}
+.price-card.featured{border-color:#08aa75}
+.contact{background:linear-gradient(135deg,#053f67,#086c74 65%,#00966d)}
+.btn{font-weight:850}
+@media(max-width:1100px){.brand{min-width:290px;font-size:1.35rem}.brand .logo{width:90px}.brand small{left:95px;font-size:.68rem}.navlinks{gap:20px}.service{grid-template-columns:5px 64px 1fr;gap:10px;padding:16px}.service-icon,.service:nth-child(2n) .service-icon{width:62px;height:66px}.service-icon svg{width:60px;height:60px}.service h3{font-size:1rem}.service p{font-size:.81rem}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;padding:0}.hero-grid>div:first-child{padding:42px 5vw 25px}.hero-art{min-height:390px}.hero:after{height:62px}.services-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nav{min-height:85px}.brand small{bottom:-12px}.navlinks .nav-booking-cta{min-height:45px}}
+@media(max-width:600px){.wrap{width:calc(100% - 32px)}.nav{min-height:78px}.brand{min-width:0;font-size:1rem;gap:5px}.brand .logo{width:63px;height:66px}.brand small{position:static;display:block;white-space:normal;padding:3px 7px;box-shadow:none;font-size:.55rem;margin-top:4px}.menu{display:block}.navlinks{top:100%;left:16px;right:16px;gap:10px}.hero-grid>div:first-child{padding:29px 16px 22px}.hero h1{font-size:clamp(2.2rem,8.5vw,3.2rem);margin:14px 0}.hero p{font-size:1rem}.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hero-actions .btn{min-height:45px;padding:10px 11px;font-size:.81rem}.hero-actions .btn:first-child{grid-column:1/-1}.hero-actions .booking-cta{grid-column:2}.booking-cta-icon{width:18px;height:18px}.booking-cta-arrow{display:none}.hero-note{font-size:.77rem}.hero-art{min-height:260px}.hero:after{height:48px}.section-head h2{font-size:clamp(1.8rem,7vw,2.5rem)}#servicios{padding:22px 0 70px}.services-grid{grid-template-columns:1fr;gap:13px}.service{grid-template-columns:6px 68px 1fr;min-height:114px;padding:16px;gap:12px}.service-icon,.service:nth-child(2n) .service-icon{width:66px;height:68px}.service-icon svg{width:65px;height:65px}.service h3{font-size:1.03rem}.service p{font-size:.86rem}.price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}section{padding:46px 0}}
+@media(max-width:370px){.brand .logo{width:52px}.brand{font-size:.9rem}.hero-actions{grid-template-columns:1fr}.hero-actions .btn,.hero-actions .btn:first-child,.hero-actions .booking-cta{grid-column:1}.price-grid{grid-template-columns:1fr}.service{grid-template-columns:5px 56px 1fr}.service-icon,.service:nth-child(2n) .service-icon{width:55px;height:58px}.service-icon svg{width:54px;height:54px}}
+
+
+/* Revisión 14–17: selección algo más legible sin perder compacidad */
+#tarifas .pack-selection-bar{max-width:640px;padding:12px 16px;gap:14px}
+#tarifas .pack-selection-info{gap:10px}
+#tarifas .pack-selection-caption{font-size:.77rem}
+#tarifas #chosen-pack{font-size:.96rem}
+#tarifas #chosen-price{font-size:1.07rem}
+#tarifas .selection-icon-button{width:42px;height:42px;border-radius:12px}
+#tarifas .selection-icon-button svg{width:24px;height:24px}
+#tarifas .pack-indivisible-note{display:flex;align-items:center;justify-content:center;gap:7px;margin:13px auto 4px;font-size:.8rem;color:#325e67;text-align:center;line-height:1.4}
+#tarifas .pack-indivisible-note svg{width:17px;height:17px;flex-shrink:0;color:#13866a}
+footer .footer-logo{width:49px;height:49px;object-fit:contain;flex-shrink:0}
+footer .footer-brand{gap:12px}
+@media(max-width:600px){
+ #tarifas .pack-selection-bar{padding:11px 12px;gap:9px}
+ #tarifas .pack-selection-caption{display:inline;font-size:.72rem}
+ #tarifas .pack-selection-info{gap:4px 8px}
+ #tarifas #chosen-pack{font-size:.86rem}
+ #tarifas #chosen-price{font-size:.94rem}
+ #tarifas .selection-icon-button{width:39px;height:39px}
+ #tarifas .selection-icon-button svg{width:22px;height:22px}
+ #tarifas .pack-indivisible-note{font-size:.73rem}
+ footer .footer-logo{width:42px;height:42px}
+}
+</style>
+<style>/* Revisión solicitada: cabecera, acciones y contacto */
+.brand small{padding:4px 11px!important;border-radius:999px!important;box-shadow:none!important;line-height:1.15!important;font-size:.69rem!important;bottom:-6px!important}
+.hero-actions{display:flex!important;flex-wrap:wrap;gap:12px}.hero-actions .btn:first-child{grid-column:auto!important;min-width:240px;justify-content:center}
+.pack-actions{display:grid;gap:9px;margin-top:auto;padding-top:10px}.pack-actions .btn{display:flex;align-items:center;justify-content:center;gap:7px;text-align:center;line-height:1.2;min-height:44px;padding:10px 8px;font-size:.82rem}
+.btn-symbol{width:17px;height:17px;flex:0 0 17px;display:inline-block;vertical-align:middle}.contact-icon .btn-symbol{width:25px;height:25px;flex-basis:25px}.contact-icon .map-pin-icon{width:28px;height:28px;stroke:none;fill:none}
+.contact-card>a.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px}
+@media(max-width:600px){.brand small{position:static!important;display:block!important;margin-top:3px!important;font-size:.56rem!important;padding:3px 6px!important}.hero-actions{display:flex!important}.hero-actions .btn:first-child{width:100%;min-width:0}.pack-actions .btn{font-size:.75rem;min-height:42px;padding:9px 5px}.pack-actions .btn-symbol{width:15px;height:15px;flex-basis:15px}}
+</style><style>
+/* Revisión 10–11: tarjetas compactas de tarifas */
+#tarifas .price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;align-items:stretch}
+#tarifas .price-card{min-width:0;padding:20px 18px 17px;border-radius:19px;transform:none;box-shadow:0 6px 20px rgba(6,48,67,.08)}
+#tarifas .price-card.featured{border:2px solid var(--teal)}
+#tarifas .price-card .price{font-size:2.15rem;line-height:1.15;margin:9px 0 3px}
+#tarifas .price-card .hours{font-size:.82rem}
+#tarifas .price-card .perhour{font-size:.85rem;margin-bottom:9px}
+#tarifas .price-card p{font-size:.86rem;line-height:1.45;margin:0 0 12px}
+#tarifas .pack-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:5px}
+#tarifas .pack-actions .btn{width:100%;min-width:0;min-height:37px;padding:8px 5px;font-size:.73rem;border-radius:11px;gap:5px;white-space:nowrap}
+#tarifas .pack-actions .btn-symbol{width:14px;height:14px;flex:0 0 14px}
+#tarifas .price-card:last-child .price{font-size:1.75rem}
+#tarifas .tariff-preview-note{font-size:.76rem;color:var(--muted);margin:15px 0 0;text-align:center}
+@media(max-width:900px){#tarifas .price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}}
+@media(max-width:550px){#tarifas .price-grid{grid-template-columns:1fr;gap:12px}#tarifas .price-card{padding:17px}#tarifas .pack-actions .btn{font-size:.82rem;min-height:40px}}
+</style><style>
+/* Revisión 12–13: selector único de tarifas compacto */
+#tarifas .price-grid{gap:12px}
+#tarifas .price-card.selectable-pack{position:relative;cursor:pointer;padding:15px 15px 13px;border:1.5px solid #e1e9e8;border-radius:16px;box-shadow:0 3px 11px rgba(6,48,67,.045);transition:border-color .15s,background .15s,box-shadow .15s;min-height:0}
+#tarifas .price-card.selectable-pack:hover{border-color:#69b9a1;box-shadow:0 5px 16px rgba(6,48,67,.10)}
+#tarifas .price-card.selectable-pack[aria-pressed="true"]{border:2px solid #20976c;background:#f0faf5;box-shadow:0 4px 13px rgba(24,126,89,.10)}
+#tarifas .price-card.selectable-pack:focus-visible{outline:3px solid #258bce;outline-offset:2px}
+#tarifas .price-card .price{font-size:1.8rem;margin:6px 0 1px}
+#tarifas .price-card .hours{font-size:.83rem;font-weight:700}
+#tarifas .price-card .perhour{font-size:.76rem;margin-bottom:6px}
+#tarifas .price-card p{font-size:.78rem;line-height:1.4;margin:0}
+#tarifas .price-card .ribbon{font-size:.61rem}
+#tarifas .pack-selected-indicator{position:absolute;right:11px;top:10px;display:none;align-items:center;justify-content:center;background:#1d9b70;color:white;border-radius:50%;width:21px;height:21px;font-weight:800;font-size:.75rem}
+#tarifas .price-card[aria-pressed="true"] .pack-selected-indicator{display:flex}
+#tarifas .pack-selection-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:17px auto 0;padding:11px 14px;border:1px solid #dcebe7;background:#f5faf8;border-radius:15px;max-width:610px}
+#tarifas .pack-selection-info{display:flex;align-items:center;gap:9px;min-width:0;flex-wrap:wrap}
+#tarifas .pack-selection-caption{font-size:.7rem;color:#627b78;white-space:nowrap}
+#tarifas #chosen-pack{font-size:.87rem;color:#153d4e}
+#tarifas #chosen-price{font-size:.93rem;font-weight:800;color:#15805e;white-space:nowrap}
+#tarifas .pack-selection-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+#tarifas .selection-icon-button{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+#tarifas .selection-icon-button:hover{transform:translateY(-2px);box-shadow:0 4px 10px #0002}
+#tarifas .selection-icon-button svg{width:21px;height:21px}
+#tarifas .whatsapp-selection{background:#168b64;color:white}
+#tarifas .booking-selection{background:#173e5d;color:white}
+#tarifas .selection-hint{font-size:.72rem;color:var(--muted);text-align:center;margin:7px auto 0}
+@media(max-width:600px){#tarifas .price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#tarifas .price-card.selectable-pack{padding:13px 10px 11px}#tarifas .price-card .price{font-size:1.52rem}#tarifas .price-card p{font-size:.72rem}#tarifas .pack-selection-bar{padding:10px;gap:8px}#tarifas .pack-selection-caption{display:none}#tarifas .pack-selection-info{gap:3px 7px}#tarifas #chosen-pack{font-size:.79rem}#tarifas #chosen-price{font-size:.83rem}#tarifas .selection-icon-button{width:36px;height:36px}}
+@media(max-width:350px){#tarifas .price-grid{grid-template-columns:1fr}}
+</style><style>
+/* Revisión 18: selector de pack más legible, precio junto al pack y acciones invertidas */
+#tarifas .pack-selection-bar{max-width:760px;padding:13px 16px;gap:12px}
+#tarifas .pack-selection-info{display:flex;align-items:center;gap:9px;flex-wrap:nowrap;min-width:0}
+#tarifas .pack-selection-caption{font-size:.85rem;font-weight:650;white-space:nowrap}
+#tarifas #chosen-pack{font-size:1.07rem;font-weight:800;white-space:nowrap}
+#tarifas #chosen-price{font-size:1.16rem;font-weight:900;white-space:nowrap}
+#tarifas .pack-selection-actions{gap:7px}
+#tarifas .selection-icon-button{height:40px;border-radius:11px}
+#tarifas .booking-selection{width:auto;min-width:124px;padding:0 10px;gap:6px;font-size:.78rem;font-weight:750;white-space:nowrap}
+#tarifas .booking-selection svg{width:18px;height:18px;flex:0 0 18px}
+#tarifas .whatsapp-selection{width:40px;min-width:40px}
+#tarifas .whatsapp-selection svg{width:23px;height:23px}
+/* Revisiones 19 y 20: contacto compacto y aviso accesible de atención telefónica */
+#contacto{padding-top:40px;padding-bottom:42px}
+#contacto .section-head{margin-bottom:21px}
+#contacto .section-head h2{font-size:clamp(1.65rem,2.5vw,2.1rem);margin:7px 0}
+#contacto .section-head p{font-size:.94rem}
+#contacto .contact-grid{gap:15px;max-width:850px}
+#contacto .contact-card{padding:19px 21px;border-radius:19px}
+#contacto .contact-card h3{font-size:1rem;margin-bottom:12px;gap:10px}
+#contacto .contact-icon{width:37px;height:37px;flex:0 0 37px;border-radius:11px}
+#contacto .contact-big{font-size:clamp(1.65rem,2.5vw,2.1rem);margin:0 0 12px}
+#contacto .contact-card p{font-size:.88rem;line-height:1.5;margin-bottom:7px}
+#contacto .contact-card p:last-of-type{margin-bottom:12px}
+#contacto .contact-card .btn{min-height:39px;padding:9px 14px;font-size:.86rem;gap:7px}
+#contacto .contact-card small{font-size:.75rem;line-height:1.45;margin-top:10px}
+#contacto .fineprint{font-size:.72rem;margin-top:10px}
+#contacto .call-action-row{display:flex;align-items:center;gap:8px;position:relative;max-width:100%}
+#contacto .call-info{position:relative;flex:0 0 auto}
+#contacto .call-info summary{display:grid;place-items:center;list-style:none;cursor:pointer;width:37px;height:37px;border-radius:10px;border:1px solid #ffffff7c;background:#ffffff19;color:#fff}
+#contacto .call-info summary::-webkit-details-marker{display:none}
+#contacto .call-info summary svg{width:21px;height:21px}
+#contacto .call-info summary:focus-visible{outline:3px solid white;outline-offset:2px}
+#contacto .call-info-text{position:absolute;bottom:calc(100% + 9px);right:0;width:min(290px,calc(100vw - 45px));background:white;color:#173e50;border:1px solid #dbe7e6;border-radius:13px;padding:12px 14px;box-shadow:0 12px 30px #082d3d55;z-index:10;font-size:.84rem;line-height:1.45}
+#contacto .call-info-text strong{display:block;margin-bottom:6px;color:#123b4a}
+#contacto .call-info-text p{color:#2d5260!important;margin:0!important;font-size:.82rem!important}
+@media(max-width:760px){
+ #tarifas .pack-selection-bar{padding:10px 11px;gap:8px}
+ #tarifas .pack-selection-info{gap:5px;flex-wrap:wrap}
+ #tarifas .pack-selection-caption{font-size:.77rem}
+ #tarifas #chosen-pack{font-size:.96rem}
+ #tarifas #chosen-price{font-size:1.04rem}
+ #tarifas .booking-selection{min-width:111px;padding:0 8px;font-size:.71rem}
+ #tarifas .booking-selection svg{width:16px;height:16px;flex-basis:16px}
+ #tarifas .whatsapp-selection{width:38px;min-width:38px}
+ #tarifas .selection-icon-button{height:38px}
+}
+@media(max-width:420px){
+ #tarifas .pack-selection-info{display:grid;grid-template-columns:auto auto;gap:2px 5px}
+ #tarifas .pack-selection-caption{grid-column:1/-1;font-size:.74rem}
+ #tarifas #chosen-pack{font-size:.86rem}
+ #tarifas #chosen-price{font-size:.93rem}
+ #tarifas .booking-selection{min-width:100px;font-size:.66rem;padding:0 6px;gap:4px}
+ #tarifas .pack-selection-bar{gap:5px}
+ #tarifas .pack-selection-actions{gap:4px}
+ #tarifas .whatsapp-selection{width:35px;min-width:35px}
+ #contacto .contact-card{padding:16px}
+ #contacto{padding:36px 0}
+}
+</style>
+<style id="revision-21-23">
+/* Cambio 21: informacion telefonica discreta, sin recuadro resaltado */
+#contacto .call-info{align-self:center}
+#contacto .call-info summary{
+  width:30px;height:32px;border:0;background:transparent;box-shadow:none;
+  border-radius:50%;color:#d4e5e9;transform:translateY(3px);
+  transition:color .2s ease,opacity .2s ease;opacity:.84;
+}
+#contacto .call-info summary:hover,
+#contacto .call-info[open] summary{background:transparent;color:#ffffff;opacity:1}
+#contacto .call-info summary svg{width:17px;height:17px}
+#contacto .call-info summary:focus-visible{outline:2px solid #d4e5e9;outline-offset:2px}
+/* Cambio 22: pulso sutil y continuo solo en el boton superior de solicitar cita */
+@keyframes pulso-cita-suave{
+  0%,100%{box-shadow:0 0 0 0 rgba(24,85,143,.28)}
+  65%{box-shadow:0 0 0 11px rgba(24,85,143,0)}
+}
+header .navlinks a.nav-booking-cta{
+  animation:pulso-cita-suave 3.4s ease-out infinite;
+}
+@media(prefers-reduced-motion:reduce){
+  header .navlinks a.nav-booking-cta{animation:none}
+}
+/* Cambio 23: linea mas fina y en un tono suave del mismo color que su icono */
+#servicios .service::before{width:4px;background:#457e9a}
+#servicios .service:nth-child(3n+1)::before{background:#4c819c}
+#servicios .service:nth-child(3n+2)::before{background:#56b985}
+#servicios .service:nth-child(3n)::before{background:#57adb5}
+</style>
+<style id="revision-24-25">
+/* Cambio 24: halo luminoso azul, suave y continuo, sin alterar el tamaño del botón. */
+@keyframes halo-cita-azul {
+  0%, 100% { box-shadow:0 5px 18px rgba(0,78,107,.18), 0 0 0 0 rgba(16,126,169,0), 0 0 0 0 rgba(46,160,201,0); }
+  42% { box-shadow:0 6px 20px rgba(0,78,107,.24), 0 0 0 5px rgba(29,132,183,.24), 0 0 20px 6px rgba(62,175,212,.22); }
+  75% { box-shadow:0 5px 18px rgba(0,78,107,.20), 0 0 0 10px rgba(39,157,193,0), 0 0 25px 11px rgba(40,155,196,0); }
+}
+header .navlinks a.nav-booking-cta {
+  animation:halo-cita-azul 3.7s ease-in-out infinite;
+  will-change:box-shadow;
+}
+/* Cambio 25: discretos halos circulares en los fondos blancos. Sin imágenes adicionales. */
+#servicios {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 240px at 4% 26%,rgba(44,173,113,.095) 0%,rgba(76,191,138,.045) 49%,transparent 78%),
+    radial-gradient(circle 280px at 96% 82%,rgba(27,160,141,.085) 0%,rgba(89,198,159,.032) 53%,transparent 80%);
+  background-repeat:no-repeat;
+}
+#tarifas {
+  background-color:#f0f8f7;
+  background-image:
+    radial-gradient(circle 265px at 97% 14%,rgba(17,165,120,.085),transparent 79%),
+    radial-gradient(circle 220px at 1% 91%,rgba(42,172,127,.055),transparent 80%);
+  background-repeat:no-repeat;
+}
+#condiciones {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 270px at 94% 22%,rgba(34,166,115,.10),rgba(57,177,126,.035) 58%,transparent 82%),
+    radial-gradient(circle 220px at 3% 90%,rgba(35,153,144,.065),transparent 80%);
+  background-repeat:no-repeat;
+}
+main > section:has(.about-grid) {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 280px at 3% 23%,rgba(50,175,118,.09),transparent 78%),
+    radial-gradient(circle 240px at 96% 86%,rgba(18,151,132,.06),transparent 80%);
+  background-repeat:no-repeat;
+}
+/* Que los fondos decorativos no interfieran con los contenidos ni las tarjetas. */
+#servicios .wrap,#tarifas .wrap,#condiciones .wrap,main > section:has(.about-grid) .wrap{position:relative;z-index:1}
+@media(max-width:600px){
+ #servicios{background-image:radial-gradient(circle 175px at -8% 17%,rgba(44,173,113,.08),transparent 78%),radial-gradient(circle 170px at 110% 85%,rgba(27,160,141,.065),transparent 80%)}
+ #tarifas{background-image:radial-gradient(circle 160px at 105% 10%,rgba(17,165,120,.065),transparent 80%)}
+ #condiciones{background-image:radial-gradient(circle 175px at 105% 23%,rgba(34,166,115,.08),transparent 82%)}
+ main > section:has(.about-grid){background-image:radial-gradient(circle 170px at -8% 20%,rgba(50,175,118,.075),transparent 78%)}
+}
+@media(prefers-reduced-motion:reduce){header .navlinks a.nav-booking-cta{animation:none;box-shadow:0 0 0 3px rgba(45,139,174,.16)}}
+</style>
+
+<style id="revision-26-27">
+/* Cambio 26 y 28: sección de condiciones simplificada y fondos decorativos más visibles. */
+#condiciones .special-row{gap:12px}
+/* Círculos decorativos más visibles: blanco predominante, halos verdes/turquesa dentro de la pantalla. */
+#servicios{background-color:#fff;background-image:radial-gradient(circle 430px at 16% 24%,rgba(60,181,121,.28) 0%,rgba(74,191,134,.16) 34%,rgba(101,208,158,.08) 50%,transparent 72%),radial-gradient(circle 390px at 84% 80%,rgba(29,172,154,.25) 0%,rgba(66,190,170,.14) 36%,rgba(106,212,192,.06) 54%,transparent 76%)}
+#tarifas{background-color:#f7fcfa;background-image:radial-gradient(circle 410px at 84% 18%,rgba(55,183,123,.24) 0%,rgba(74,192,137,.12) 38%,transparent 73%),radial-gradient(circle 330px at 13% 86%,rgba(31,170,152,.16) 0%,rgba(86,201,182,.08) 38%,transparent 72%)}
+#condiciones{background-color:#fff;background-image:radial-gradient(circle 420px at 85% 22%,rgba(53,179,120,.24) 0%,rgba(73,193,139,.12) 38%,transparent 73%),radial-gradient(circle 320px at 14% 86%,rgba(33,162,152,.15) 0%,rgba(85,197,184,.08) 40%,transparent 74%)}
+main > section:has(.about-grid){background-color:#fff;background-image:radial-gradient(circle 400px at 16% 22%,rgba(61,182,122,.22) 0%,rgba(88,197,146,.11) 38%,transparent 74%),radial-gradient(circle 330px at 87% 84%,rgba(25,162,147,.14) 0%,rgba(88,201,186,.07) 38%,transparent 74%)}
+#servicios .wrap,#tarifas .wrap,#condiciones .wrap,main > section:has(.about-grid) .wrap{position:relative;z-index:1}
+@media(max-width:600px){
+ #servicios{background-image:radial-gradient(circle 240px at -4% 16%,rgba(60,181,121,.18) 0%,rgba(74,191,134,.11) 40%,transparent 72%),radial-gradient(circle 220px at 108% 86%,rgba(29,172,154,.16) 0%,rgba(66,190,170,.09) 40%,transparent 74%)}
+ #tarifas{background-image:radial-gradient(circle 220px at 104% 12%,rgba(55,183,123,.18) 0%,rgba(74,192,137,.1) 40%,transparent 73%),radial-gradient(circle 170px at 6% 88%,rgba(31,170,152,.10) 0%,transparent 70%)}
+ #condiciones{background-image:radial-gradient(circle 230px at 106% 22%,rgba(53,179,120,.18) 0%,rgba(73,193,139,.1) 40%,transparent 73%),radial-gradient(circle 175px at 4% 88%,rgba(33,162,152,.10) 0%,transparent 72%)}
+ main > section:has(.about-grid){background-image:radial-gradient(circle 220px at -2% 18%,rgba(61,182,122,.16) 0%,rgba(88,197,146,.09) 40%,transparent 73%),radial-gradient(circle 160px at 104% 86%,rgba(25,162,147,.08) 0%,transparent 72%)}
+}
+</style>
+<style id="revision-29-circulos">
+/* CAMBIO 30: círculos menta y turquesa superpuestos, inspirados en la referencia.
+   Bordes definidos, colores ligeramente más intensos y blanco predominante. */
+#servicios, #tarifas, #condiciones, main > section:has(.about-grid) {
+  background-repeat:no-repeat;
+  background-attachment:scroll;
+}
+#servicios {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 135px at 7% 18%,rgba(45,221,172,0.26) 99%,transparent 100%),
+    radial-gradient(circle 70px at 21% 28%,rgba(60,205,178,0.26) 99%,transparent 100%),
+    radial-gradient(circle 175px at 88% 27%,rgba(42,212,187,0.24) 99%,transparent 100%),
+    radial-gradient(circle 93px at 77% 43%,rgba(35,221,161,0.24) 99%,transparent 100%),
+    radial-gradient(circle 145px at 15% 86%,rgba(35,200,177,0.23) 99%,transparent 100%),
+    radial-gradient(circle 65px at 88% 92%,rgba(64,210,159,0.23) 99%,transparent 100%);
+}
+#tarifas {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 105px at 13% 14%,rgba(40,210,170,0.25) 99%,transparent 100%),
+    radial-gradient(circle 59px at 25% 24%,rgba(72,224,193,0.25) 99%,transparent 100%),
+    radial-gradient(circle 160px at 91% 27%,rgba(63,213,184,0.24) 99%,transparent 100%),
+    radial-gradient(circle 80px at 81% 47%,rgba(38,208,161,0.21) 99%,transparent 100%),
+    radial-gradient(circle 135px at 11% 86%,rgba(47,203,191,0.23) 99%,transparent 100%);
+}
+#condiciones {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 145px at 10% 19%,rgba(67,223,173,0.26) 99%,transparent 100%),
+    radial-gradient(circle 75px at 24% 31%,rgba(28,205,186,0.25) 99%,transparent 100%),
+    radial-gradient(circle 170px at 88% 70%,rgba(51,218,186,0.26) 99%,transparent 100%),
+    radial-gradient(circle 86px at 74% 85%,rgba(60,211,143,0.24) 99%,transparent 100%),
+    radial-gradient(circle 55px at 92% 15%,rgba(92,225,190,0.22) 99%,transparent 100%);
+}
+main > section:has(.about-grid) {
+  background-color:#fff;
+  background-image:
+    radial-gradient(circle 135px at 8% 19%,rgba(49,214,168,0.24) 99%,transparent 100%),
+    radial-gradient(circle 65px at 22% 13%,rgba(44,223,191,0.22) 99%,transparent 100%),
+    radial-gradient(circle 165px at 91% 24%,rgba(47,215,192,0.23) 99%,transparent 100%),
+    radial-gradient(circle 88px at 77% 35%,rgba(45,209,164,0.22) 99%,transparent 100%);
+}
+/* Cambio 31: círculos de Quiénes somos elevados para despejar la transición inferior. */
+/* Móvil: menos círculos y tamaño reducido; el contenido sigue siendo protagonista. */
+@media(max-width:600px) {
+  #servicios {background-image:
+    radial-gradient(circle 85px at 0% 14%,rgba(45,221,172,0.24) 99%,transparent 100%),
+    radial-gradient(circle 50px at 18% 21%,rgba(60,205,178,0.22) 99%,transparent 100%),
+    radial-gradient(circle 105px at 100% 77%,rgba(42,212,187,0.22) 99%,transparent 100%)}
+  #tarifas {background-image:
+    radial-gradient(circle 80px at 94% 14%,rgba(40,210,170,0.24) 99%,transparent 100%),
+    radial-gradient(circle 48px at 77% 21%,rgba(72,224,193,0.21) 99%,transparent 100%),
+    radial-gradient(circle 100px at -3% 88%,rgba(63,213,184,0.23) 99%,transparent 100%)}
+  #condiciones {background-image:
+    radial-gradient(circle 90px at 0% 18%,rgba(67,223,173,0.24) 99%,transparent 100%),
+    radial-gradient(circle 100px at 99% 82%,rgba(51,218,186,0.23) 99%,transparent 100%)}
+  main > section:has(.about-grid) {background-image:
+    radial-gradient(circle 85px at 0% 17%,rgba(49,214,168,0.23) 99%,transparent 100%),
+    radial-gradient(circle 95px at 102% 27%,rgba(47,215,192,0.21) 99%,transparent 100%)}
+}
 </style>
 </head>
 <body>
 <header>
-  <div class="wrap nav">
-    <a class="brand" href="#inicio" aria-label="Una mano en casa, inicio"><img class="logo" src="logo-una-mano.png" alt="Logo Una Mano en Casa"><span>Una mano en casa<small>Tu apoyo en el día a día</small></span></a>
-    <button class="menu" aria-label="Abrir menú" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
-    <nav class="navlinks" aria-label="Navegación principal">
-      <a href="#servicios">Servicios</a><a href="#tarifas">Tarifas</a><a href="#condiciones">Condiciones</a><a class="btn booking-cta nav-booking-cta" href="./citas.html">
-          <svg class="booking-cta-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 4h.01m4 0h.01m4 0h.01m-8 3h.01m4 0h.01m4 0h.01"/></svg>
-          <span class="booking-cta-copy"><strong>Solicitar cita</strong></span>
-          <svg class="booking-cta-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-    </nav>
-  </div>
+<div class="wrap nav">
+<a aria-label="Una mano en casa, inicio" class="brand" href="#inicio"><img alt="Logo Una Mano en Casa" class="logo" src="logo-una-mano.png"/><span>UNA MANO<br/>EN CASA<small>Ayuda sencilla para el día a día</small></span></a>
+<button aria-label="Abrir menú" class="menu" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+<nav aria-label="Navegación principal" class="navlinks">
+<a href="#servicios">Servicios</a><a href="#tarifas">Tarifas</a><a href="#condiciones">Condiciones</a><a class="btn booking-cta nav-booking-cta" href="./citas.html">
+<svg aria-hidden="true" class="booking-cta-icon" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24" width="24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18m-13 4h.01m4 0h.01m4 0h.01m-8 3h.01m4 0h.01m4 0h.01"></path></svg>
+<span class="booking-cta-copy"><strong>Solicitar cita</strong></span>
+<svg aria-hidden="true" class="booking-cta-arrow" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="m9 18 6-6-6-6"></path></svg>
+</a>
+</nav>
+</div>
 </header>
 <main>
 <section class="hero" id="inicio">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">💚 PEQUEÑOS GESTOS, GRANDES DIFERENCIAS</span>
-      <h1>Una mano en casa,<br><em>cuando la necesitas.</em></h1>
-      <p>Ayuda cercana y flexible para las tareas del día a día. Recados, acompañamiento y compañía para ti o para las personas que más quieres.</p>
-      <div class="hero-actions"><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Una%20mano%20en%20casa.">💬 Escríbenos por WhatsApp</a><a class="btn secondary" href="#tarifas">Ver tarifas</a><a class="btn booking-cta" href="./citas.html">
-          <svg class="booking-cta-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18m-13 4h.01m4 0h.01m4 0h.01m-8 3h.01m4 0h.01m4 0h.01"/></svg>
-          <span class="booking-cta-copy"><strong>Solicitar cita</strong></span>
-          <svg class="booking-cta-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-        </a></div>
-
-      <div class="hero-note">✓ Sin permanencia · ✓ Trato cercano · ✓ Precios claros</div>
-    </div>
-    <div class="hero-art" aria-label="Jesús, de Una mano en casa"><img class="hero-photo" src="foto-acompanamiento-hospitalario.jpg" alt=""><div class="art-card one">A tu ritmo<span>La ayuda que necesitas</span></div><div class="art-card two">💚 Trato cercano<span>Personas que ayudan</span></div></div>
-  </div>
+<div class="wrap hero-grid">
+<div>
+<span class="eyebrow">PEQUEÑOS GESTOS, GRANDES DIFERENCIAS</span>
+<h1>Tu apoyo en casa,<br/><em>cuando lo necesitas</em></h1>
+<p>Ayuda cercana y flexible para las tareas del día a día. Recados, acompañamiento y compañía para ti o para las personas que más quieres.</p>
+<div class="hero-actions"><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Una%20mano%20en%20casa."><svg aria-hidden="true" fill="currentColor" height="18" style="display:inline-block;vertical-align:-3px;margin-right:5px;flex:none" viewbox="0 0 32 32" width="18"><path d="M16 2.5A13.35 13.35 0 0 0 4.5 22.7L2.7 29.4l6.9-1.8A13.5 13.5 0 1 0 16 2.5Zm0 24.5a11 11 0 0 1-5.6-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A11.1 11.1 0 1 1 16 27Zm6.1-8.3c-.3-.2-1.9-1-2.2-1.1s-.5-.2-.7.2-.8 1.1-1 1.3-.4.3-.7.1a9 9 0 0 1-4.5-4c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.8-1-2.5-.5-.6-.7-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 2.9 1.2 3.4 1.4 3.6a12.4 12.4 0 0 0 4.8 4.8c2.3 1 3.2 1.1 4.3.9.7-.1 1.9-.8 2.2-1.6s.3-1.5.2-1.6-.3-.2-.6-.4Z"></path></svg>Escríbenos por WhatsApp</a></div>
+<div class="hero-note">✓ Sin permanencia · ✓ Trato cercano · ✓ Precios claros</div>
+</div>
+<div aria-label="Jesús, de Una mano en casa" class="hero-art"><img alt="" class="hero-photo" src="foto-acompanamiento-hospitalario.jpg"/><div class="art-card one">A tu ritmo<span>La ayuda que necesitas</span></div><div class="art-card two">💚 Trato cercano<span>Personas que ayudan</span></div></div>
+</div>
 </section>
 <section id="servicios">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow">¿EN QUÉ PODEMOS AYUDARTE?</span><h2>Un apoyo práctico para tu día a día</h2><p>Nos cuentas qué necesitas y acordamos el servicio y el horario según disponibilidad.</p></div>
-    <div class="services-grid">
-      <article class="service"><div class="service-icon">🛒</div><h3>Compras y recados</h3><p>Compra según tu lista y entrega del ticket, farmacia, panadería, banco, correos y otras gestiones sencillas.</p></article>
-      <article class="service"><div class="service-icon">🩺</div><h3>Acompañamiento a citas</h3><p>Compañía para acudir a consultas, pruebas, citas y gestiones, siempre dentro de las condiciones acordadas.</p></article>
-      <article class="service"><div class="service-icon">☕</div><h3>Compañía y paseos</h3><p>Un rato de conversación, un paseo tranquilo o compañía en casa cuando apetece no estar solo.</p></article>
-      <article class="service"><div class="service-icon">🏠</div><h3>Pequeños recados en casa</h3><p>Ayuda cotidiana sencilla y pequeñas gestiones domésticas previamente acordadas.</p></article>
-      <article class="service"><div class="service-icon">🏥</div><h3>Acompañamiento hospitalario</h3><p>Consulta disponibilidad y condiciones para acompañamiento durante una estancia hospitalaria.</p></article>
-      <article class="service"><div class="service-icon">🚗</div><h3>Apoyo en el alta</h3><p>Ayuda para organizar la vuelta a casa y las gestiones prácticas tras el alta, según lo que necesites.</p></article>
-    </div>
-  </div>
+<div class="wrap">
+<div class="section-head"><span class="eyebrow">¿EN QUÉ PODEMOS AYUDARTE?</span><h2>Un apoyo práctico para tu día a día</h2><p>Nos cuentas qué necesitas y acordamos el servicio y el horario según disponibilidad.</p></div>
+<div class="services-grid">
+<article class="service"><div class="service-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><rect height="17" rx="2" width="14" x="5" y="5"></rect><path d="M9 5V3h6v2M8 10l1.5 1.5L12 9m2 2h3M8 16l1.5 1.5L12 15m2 2h3"></path></svg></div><h3>Compras y recados</h3><p>Compras según tu lista, recogida de medicamentos en farmacia, envío y recogida de paquetes y pequeñas gestiones del día a día.</p></article>
+<article class="service"><div class="service-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M6 3v6a4 4 0 0 0 8 0V3M4 3h4m4 0h4M10 13v3a5 5 0 0 0 10 0v-3"></path><circle cx="20" cy="11" r="2"></circle></svg></div><h3>Acompañamiento a citas</h3><p>Compañía para acudir a consultas, pruebas, citas y gestiones, siempre dentro de las condiciones acordadas.</p></article>
+<article class="service"><div class="service-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="7" cy="5" r="2"></circle><circle cx="17" cy="5" r="2"></circle><path d="M7 8v7m10-7v7M7 11l-2 10m2-6 3 6m7-10-2 10m2-6 3 6M9 10l3 2 3-2"></path></svg></div><h3>Compañía y paseos</h3><p>Un rato de conversación, un paseo tranquilo o compañía en casa cuando apetece no estar solo.</p></article>
+<article class="service"><div class="service-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><rect height="18" rx="2" width="14" x="5" y="4"></rect><path d="M9 4V2h6v2M8 13l2.5 2.5L16 10"></path></svg></div><h3>Acompañamiento en gestiones personales</h3><p>Te acompañamos a realizar trámites y gestiones personales, con compañía durante el desplazamiento y la espera.</p></article>
+<article class="service"><div class="service-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M4 22V7h16v15M2 22h20M8 7V3h8v4M9 11h6m-3-3v6M8 22v-5h8v5"></path></svg></div><h3>Acompañamiento hospitalario</h3><p>Consulta disponibilidad y condiciones para acompañamiento durante una estancia hospitalaria.</p></article>
+<article class="service"><div class="service-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 3h10l5 5v13H5zM15 3v6h5M8 14l2 2 4-4M8 19h9"></path></svg></div><h3>Apoyo en el alta</h3><p>Ayuda para organizar la vuelta a casa y las gestiones prácticas tras el alta, según lo que necesites.</p></article>
+</div>
+</div>
 </section>
 <section class="pricing" id="tarifas">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow">TARIFAS CLARAS</span><h2>Elige el pack que mejor te venga</h2><p>Servicios flexibles, sin permanencia. Los packs largos se organizan en varias visitas según disponibilidad.</p></div>
-    <div class="price-grid">
-      <article class="price-card"><div class="hours">Servicio puntual</div><div class="price">19 €</div><div class="perhour">por hora</div><p>Para un recado o una gestión sencilla cuando necesitas una ayuda rápida.</p><a class="btn secondary" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20consultar%20el%20servicio%20puntual%20de%201%20hora.">Consultar</a></article>
-      <article class="price-card featured"><div class="ribbon">⭐ RECOMENDADO</div><div class="hours">Pack de 3 horas</div><div class="price">54 €</div><div class="perhour">18 €/hora</div><p>Ideal para acompañamiento, compras o varias gestiones según tus necesidades y disponibilidad.</p><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20reservar%20o%20consultar%20el%20pack%20de%203%20horas.">Elegir pack</a></article>
-      <article class="price-card"><div class="hours">Pack de 6 horas</div><div class="price">108 €</div><div class="perhour">18 €/hora</div><p>Horas organizadas en una o varias visitas según tus necesidades y disponibilidad.</p><a class="btn secondary" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20consultar%20el%20pack%20de%206%20horas.">Consultar</a></article>
-      <article class="price-card"><div class="hours">Pack de 12 horas</div><div class="price">216 €</div><div class="perhour">18 €/hora</div><p>Para clientes habituales que necesitan apoyo repartido en varias visitas.</p><a class="btn secondary" href="https://wa.me/34624249294?text=Hola%2C%20quiero%20consultar%20el%20pack%20de%2012%20horas.">Consultar</a></article>
-    </div>
-    <p style="text-align:center;color:var(--muted);font-size:.88rem;margin-top:22px">Consulta previamente disponibilidad, desplazamientos y condiciones del servicio.</p>
-  </div>
+<div class="wrap">
+<div class="section-head"><span class="eyebrow">TARIFAS CLARAS</span><h2>Elige el pack que mejor te venga</h2><p>Servicios de acompañamiento con tarifas claras y sin permanencia. Cada pack se disfruta en un único servicio continuado.</p></div>
+<div class="price-grid">
+<article aria-pressed="true" class="price-card selectable-pack" data-name="Servicio puntual" data-pack="1" data-price="19 €" role="button" tabindex="0"><span aria-hidden="true" class="pack-selected-indicator">✓</span><div class="hours">Servicio puntual</div><div class="price">19 €</div><div class="perhour">19 €/hora</div><p>Para un recado o una gestión sencilla cuando necesitas una ayuda rápida.</p></article>
+<article aria-pressed="false" class="price-card selectable-pack" data-name="Pack de 3 horas" data-pack="3" data-price="54 €" role="button" tabindex="0"><span aria-hidden="true" class="pack-selected-indicator">✓</span><div class="ribbon">⭐ RECOMENDADO</div><div class="hours">Pack de 3 horas</div><div class="price">54 €</div><div class="perhour">18 €/hora</div><p>Ideal para acompañamiento, compras o varias gestiones según tus necesidades y disponibilidad.</p></article>
+<article aria-pressed="false" class="price-card selectable-pack" data-name="Pack de 6 horas" data-pack="6" data-price="108 €" role="button" tabindex="0"><span aria-hidden="true" class="pack-selected-indicator">✓</span><div class="hours">Pack de 6 horas</div><div class="price">108 €</div><div class="perhour">18 €/hora</div><p>Para un acompañamiento continuado de mayor duración.</p></article>
+<article aria-pressed="false" class="price-card selectable-pack" data-name="Pack de 9 horas" data-pack="9" data-price="162 €" role="button" tabindex="0"><span aria-hidden="true" class="pack-selected-indicator">✓</span><div class="hours">Pack de 9 horas</div><div class="price">162 €</div><div class="perhour">18 €/hora</div><p>Acompañamiento prolongado para una jornada.</p></article><article aria-pressed="false" class="price-card selectable-pack" data-name="Pack de 12 horas" data-pack="12" data-price="216 €" role="button" tabindex="0"><span aria-hidden="true" class="pack-selected-indicator">✓</span><div class="hours">Pack de 12 horas</div><div class="price">216 €</div><div class="perhour">18 €/hora</div><p>Acompañamiento durante una jornada completa.</p></article><article aria-pressed="false" class="price-card selectable-pack" data-name="Consulta personalizada" data-pack="0" data-price="A medida" role="button" tabindex="0"><span aria-hidden="true" class="pack-selected-indicator">✓</span><div class="hours">Consulta personalizada</div><div class="price">A medida</div><div class="perhour">Según disponibilidad</div><p>¿No sabes qué pack elegir? Cuéntanos qué acompañamiento necesitas y te orientamos.</p></article>
+</div><div aria-live="polite" class="pack-selection-bar"><div class="pack-selection-info"><span class="pack-selection-caption">Tu elección</span><strong id="chosen-pack">Servicio puntual</strong><span id="chosen-price">19 €</span></div><div class="pack-selection-actions"><a aria-label="Solicitar cita para el servicio puntual" class="selection-icon-button booking-selection" href="./citas.html?pack=1" id="chosen-booking" title="Solicitar cita para el pack seleccionado"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18m-13 5h8"></path></svg><span class="booking-text">Solicitar cita</span></a><a aria-label="Consultar por WhatsApp sobre el servicio puntual" class="selection-icon-button whatsapp-selection" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20consultar%20sobre%20el%20servicio%20puntual%20de%201%20hora." id="chosen-whatsapp" rel="noopener" target="_blank" title="Consultar por WhatsApp"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 32 32"><path d="M16 2.5A13.35 13.35 0 0 0 4.5 22.7L2.7 29.4l6.9-1.8A13.5 13.5 0 1 0 16 2.5Zm0 24.5a11 11 0 0 1-5.6-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A11.1 11.1 0 1 1 16 27Zm6.1-8.3c-.3-.2-1.9-1-2.2-1.1s-.5-.2-.7.2-.8 1.1-1 1.3-.4.3-.7.1a9 9 0 0 1-4.5-4c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.8-1-2.5-.5-.6-.7-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 2.9 1.2 3.4 1.4 3.6a12.4 12.4 0 0 0 4.8 4.8c2.3 1 3.2 1.1 4.3.9.7-.1 1.9-.8 2.2-1.6s.3-1.5.2-1.6-.3-.2-.6-.4Z"></path></svg></a></div></div><p class="pack-indivisible-note"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5m0-8h.01"></path></svg><span>Los packs son indivisibles: todas las horas se realizan en un único servicio continuado.</span></p><p class="selection-hint">Selecciona un pack y utiliza WhatsApp o el calendario para continuar.</p><p class="tariff-preview-note">Las tarifas mostradas corresponden a la duración seleccionada. La selección automática de cada pack en el portal de reservas está pendiente de verificar.</p>
+<p style="text-align:center;color:var(--muted);font-size:.88rem;margin-top:22px">Consulta previamente disponibilidad, desplazamientos y condiciones del servicio.</p>
+</div>
 </section>
 <section id="condiciones">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow">TRANSPARENCIA DESDE EL PRINCIPIO</span><h2>Servicios especiales y condiciones</h2><p>Queremos que sepas qué incluye el servicio antes de contratarlo.</p></div>
-    <div class="specials">
-      <details class="panel mobile-details"><summary>Servicios especiales</summary><div class="details-body">
-        <div class="special-row"><div><strong>Recados sencillos</strong><span>Supermercado, farmacia y gestiones</span></div><b>Desde 19 €/h</b></div>
-        <div class="special-row"><div><strong>Acompañamiento a consulta</strong><span>Otras gestiones médicas</span></div><b>Desde 19 €/h</b></div>
-        <div class="special-row"><div><strong>Compañía en casa o paseo</strong><span>Tiempo de calidad y conversación</span></div><b>Desde 19 €/h</b></div>
-        <div class="special-row"><div><strong>Acompañamiento hospitalario</strong><span>Consultar condiciones y disponibilidad</span></div><b>Desde 19 €/h</b></div>
-        <div class="special-row"><div><strong>Tiempo adicional</strong><span>Tras 15 minutos de cortesía, por cada bloque de 30 min</span></div><b>9,50 € puntual · 9 € pack</b></div>
+<div class="wrap">
+<div class="section-head"><span class="eyebrow">TRANSPARENCIA DESDE EL PRINCIPIO</span><h2>Servicios especiales y condiciones</h2><p>Queremos que sepas qué incluye el servicio antes de contratarlo.</p></div>
+<div class="specials">
+<details class="panel mobile-details"><summary>Servicios especiales</summary><div class="details-body">
+        <div class="special-row"><div><strong>Recados sencillos</strong><span>Supermercado, farmacia y gestiones</span></div><b>Desde 19 €</b></div>
+        <div class="special-row"><div><strong>Acompañamiento a consulta</strong><span>Otras gestiones médicas</span></div></div>
+        <div class="special-row"><div><strong>Compañía en casa o paseo</strong><span>Tiempo de calidad y conversación</span></div></div>
+        <div class="special-row"><div><strong>Acompañamiento hospitalario</strong><span>Consultar condiciones y disponibilidad</span></div></div>
+        <div class="special-row"><div><strong>Tiempo adicional</strong><span>Tras 15 minutos de cortesía, por cada bloque de 30 min</span></div><b>10 € / 30 min</b></div>
       </div></details><details class="panel green mobile-details"><summary>Condiciones generales</summary><div class="details-body"><ul class="conditions">
-        <li><div class="tick">✓</div><div><strong>Zonas de servicio</strong><span>Elche, Crevillente, Aspe y pedanías. Consulta posibles suplementos por desplazamiento.</span></div></li>
-        <li><div class="tick">✓</div><div><strong>Packs de horas</strong><span>Las horas se organizan en una o varias visitas, según acuerdo y disponibilidad.</span></div></li>
-        <li><div class="tick">✓</div><div><strong>Tiempo adicional</strong><span>Los primeros 15 minutos que excedan el horario contratado son de cortesía. Desde entonces se cobra cada bloque completo de 30 minutos: 9,50 € en servicio puntual o 9 € con pack.</span></div></li>
-        <li><div class="tick">✓</div><div><strong>Compras y recados</strong><span>El coste de los productos o tasas lo abona el cliente aparte, con justificante.</span></div></li>
-        <li><div class="tick">✓</div><div><strong>Sin permanencia</strong><span>Contrata cuando lo necesites. Las cancelaciones deben comunicarse con antelación.</span></div></li>
-      </ul></div></details></div><p style="color:var(--muted);font-size:.86rem;margin-top:18px">Una mano en casa ofrece apoyo cotidiano y acompañamiento no sanitario. No sustituye a servicios médicos, de emergencia ni a profesionales sanitarios o sociales. Las condiciones definitivas se confirmarán al reservar.</p>
-  </div>
+<li><div class="tick">✓</div><div><strong>Zonas de servicio</strong><span>Elche, Crevillente, Aspe y pedanías. Consulta posibles suplementos por desplazamiento.</span></div></li>
+<li><div class="tick">✓</div><div><strong>Packs de horas</strong><span>Los packs se contratan para un único servicio continuado, por la duración seleccionada. No se pueden dividir ni repartir entre diferentes días o visitas. Si necesitas más horas u otro acompañamiento, puedes solicitar una nueva cita.</span></div></li>
+<li><div class="tick">✓</div><div><strong>Tiempo adicional</strong><span>Los primeros 15 minutos que excedan el horario contratado son de cortesía. Después se cobra 10 € por cada bloque completo de 30 minutos, tanto en servicios puntuales como en packs.</span></div></li>
+<li><div class="tick">✓</div><div><strong>Compras y recados</strong><span>El coste de los productos o tasas lo abona el cliente aparte, con justificante.</span></div></li>
+<li><div class="tick">✓</div><div><strong>Sin permanencia</strong><span>Contrata cuando lo necesites. Las cancelaciones deben comunicarse con antelación.</span></div></li>
+</ul></div></details></div><p style="color:var(--muted);font-size:.86rem;margin-top:18px">Una mano en casa ofrece apoyo cotidiano y acompañamiento no sanitario. No sustituye a servicios médicos, de emergencia ni a profesionales sanitarios o sociales. Las condiciones definitivas se confirmarán al reservar.</p>
+</div>
 </section>
 <section>
-  <div class="wrap about-grid">
-    <div class="about-art"><img src="foto-quienes-somos-original.jpg" alt="Jesús, de Una mano en casa"></div>
-    <div class="about-copy"><span class="eyebrow">QUIÉNES SOMOS</span><h2>Más tranquilidad para ti y los tuyos</h2><p>A veces, una pequeña ayuda marca la diferencia: hacer una compra, acompañar a una cita o tener a alguien con quien contar. La idea es ofrecer un trato humano, flexible y claro, adaptado a cada necesidad.</p><div class="chips"><span class="chip">Elche</span><span class="chip">Crevillente</span><span class="chip">Aspe</span><span class="chip">Pedanías</span></div><div class="hero-actions"><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20saber%20si%20pod%C3%A9is%20ayudarme.">Cuéntanos qué necesitas</a></div></div>
-  </div>
+<div class="wrap about-grid">
+<div class="about-art"><img alt="Jesús, de Una mano en casa" src="foto-quienes-somos-original.jpg"/></div>
+<div class="about-copy"><span class="eyebrow">QUIÉNES SOMOS</span><h2>Más tranquilidad para ti y los tuyos</h2><p>A veces, una pequeña ayuda marca la diferencia: hacer una compra, acompañar a una cita o tener a alguien con quien contar. La idea es ofrecer un trato humano, flexible y claro, adaptado a cada necesidad.</p><div class="chips"><span class="chip">Elche</span><span class="chip">Crevillente</span><span class="chip">Aspe</span><span class="chip">Pedanías</span></div><div class="hero-actions"></div></div>
+</div>
 </section>
 <section class="contact" id="contacto">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="background:#ffffff1c;color:#d5f6e7">CONTACTO</span><h2>¿Hablamos?</h2><p>Cuéntanos qué necesitas y vemos juntos cómo podemos ayudarte.</p></div>
-    <div class="contact-grid">
-      <div class="contact-card"><h3><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h3l2 5-2 1.5a15 15 0 0 0 4.5 4.5L16 12l5 2v3a2 2 0 0 1-2 2C10 19 5 14 4 5a2 2 0 0 1 2-2Z"/><path d="M15 4h5v5M20 4l-6 6"/></svg></span>Teléfono y WhatsApp</h3><div class="contact-big">624 249 294</div><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Una%20mano%20en%20casa.">Abrir WhatsApp</a><small>Si prefieres llamar, utiliza el número indicado.</small></div>
-      <div class="contact-card"><h3><span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>Zona de servicio</h3><p>Elche · Crevillente · Aspe y pedanías</p><p>Horario y disponibilidad: se confirman al contactar.</p><a class="btn" href="tel:+34624249294">Llamar ahora</a><div class="fineprint">No es un servicio de emergencias. En una urgencia, llama al 112.</div></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="section-head"><span class="eyebrow" style="background:#ffffff1c;color:#d5f6e7">CONTACTO</span><h2>¿Hablamos?</h2><p>Cuéntanos qué necesitas y vemos juntos cómo podemos ayudarte.</p></div>
+<div class="contact-grid">
+<div class="contact-card"><h3><span aria-hidden="true" class="contact-icon"><svg aria-hidden="true" class="btn-symbol" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 3h3l2 5-2 1.5a15 15 0 0 0 4.5 4.5L16 12l5 2v3a2 2 0 0 1-2 2C10 19 5 14 4 5a2 2 0 0 1 2-2Z"></path></svg></span>Teléfono y WhatsApp</h3><div class="contact-big">624 249 294</div><a class="btn" href="https://wa.me/34624249294?text=Hola%2C%20me%20gustar%C3%ADa%20informaci%C3%B3n%20sobre%20Una%20mano%20en%20casa."><svg aria-hidden="true" class="btn-symbol" fill="currentColor" viewbox="0 0 32 32"><path d="M16 2.5A13.35 13.35 0 0 0 4.5 22.7L2.7 29.4l6.9-1.8A13.5 13.5 0 1 0 16 2.5Zm0 24.5a11 11 0 0 1-5.6-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A11.1 11.1 0 1 1 16 27Zm6.1-8.3c-.3-.2-1.9-1-2.2-1.1s-.5-.2-.7.2-.8 1.1-1 1.3-.4.3-.7.1a9 9 0 0 1-4.5-4c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.6s-.7-1.8-1-2.5-.5-.6-.7-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 2.9 1.2 3.4 1.4 3.6a12.4 12.4 0 0 0 4.8 4.8c2.3 1 3.2 1.1 4.3.9.7-.1 1.9-.8 2.2-1.6s.3-1.5.2-1.6-.3-.2-.6-.4Z"></path></svg>Abrir WhatsApp</a><small>Preferiblemente por WhatsApp. Te responderemos lo antes posible.</small></div>
+<div class="contact-card"><h3><span aria-hidden="true" class="contact-icon"><svg aria-hidden="true" class="map-pin-icon" viewbox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 5.5 8 12 8 12s8-6.5 8-12a8 8 0 0 0-8-8Zm0 11.3a3.3 3.3 0 1 1 0-6.6 3.3 3.3 0 0 1 0 6.6Z" fill="#4285F4"></path><path d="M4 10c0 5.5 8 12 8 12-3-5-5.8-8.2-5.8-12Z" fill="#34A853"></path><path d="M12 2a8 8 0 0 1 8 8c0 2.8-2.1 6.5-4.5 9.1 1.4-3.1 2.3-5.8 2.3-9.1A5.8 5.8 0 0 0 12 4.2Z" fill="#FBBC05"></path><path d="M12 2a8 8 0 0 0-8 8h2.2A5.8 5.8 0 0 1 12 4.2Z" fill="#EA4335"></path><circle cx="12" cy="10" fill="white" r="3"></circle></svg></span>Zona de servicio</h3><p>Elche · Crevillente · Aspe y pedanías</p><p>Horario y disponibilidad: se confirman al contactar.</p><div class="call-action-row"><a class="btn" href="tel:+34624249294"><svg aria-hidden="true" class="btn-symbol" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 3h3l2 5-2 1.5a15 15 0 0 0 4.5 4.5L16 12l5 2v3a2 2 0 0 1-2 2C10 19 5 14 4 5a2 2 0 0 1 2-2Z"></path></svg>Llamar ahora</a><details class="call-info"><summary aria-label="Información sobre la atención telefónica" title="Información sobre la atención telefónica"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5m0-8h.01"></path></svg></summary><div class="call-info-text" role="note"><strong>Atención telefónica</strong><p>Es posible que no podamos atender tu llamada en ese momento. Te recomendamos escribirnos por WhatsApp o solicitar una cita desde nuestra web. Te responderemos lo antes posible.</p></div></details></div><div class="fineprint">No es un servicio de emergencias. En una urgencia, llama al 112.</div></div>
+</div>
+</div>
 </section>
 </main>
-<footer><div class="footer-brand"><span class="footer-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/><path d="M12 13s-3-1.8-3-3.5A1.8 1.8 0 0 1 12 8.4a1.8 1.8 0 0 1 3 1.1C15 11.2 12 13 12 13Z"/></svg></span>UNA MANO EN CASA</div><p class="footer-tagline">Más que un servicio, un apoyo real.</p><p class="footer-details">Pequeños gestos, grandes diferencias · 624 249 294</p><p class="ai-disclosure">Algunas imágenes de esta web han sido creadas con inteligencia artificial y tienen un fin ilustrativo. No representan necesariamente a personas, clientes ni servicios reales.</p></footer>
+<footer><div class="footer-brand"><img alt="Logo de Una Mano en Casa" class="footer-logo" src="logo-una-mano.png"/>UNA MANO EN CASA</div><p class="footer-tagline">Más que un servicio, un apoyo real.</p><p class="footer-details">Pequeños gestos, grandes diferencias · 624 249 294</p><p class="ai-disclosure">Algunas imágenes de esta web han sido creadas con inteligencia artificial y tienen un fin ilustrativo. No representan necesariamente a personas, clientes ni servicios reales.</p></footer>
 <script>
 const mobileDetailsQuery=matchMedia("(max-width: 600px)");const syncMobileDetails=()=>document.querySelectorAll(".mobile-details").forEach(item=>{item.open=!mobileDetailsQuery.matches});syncMobileDetails();mobileDetailsQuery.addEventListener("change",syncMobileDetails);
 document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.navlinks').classList.remove('open')));
 </script>
-</body>
+<script>
+(function(){
+ const cards=Array.from(document.querySelectorAll('#tarifas .selectable-pack'));
+ const nameEl=document.getElementById('chosen-pack'),priceEl=document.getElementById('chosen-price');
+ const wa=document.getElementById('chosen-whatsapp'),book=document.getElementById('chosen-booking');
+ function select(card){
+  cards.forEach(c=>c.setAttribute('aria-pressed',String(c===card)));
+  const hours=card.dataset.pack,name=card.dataset.name;
+  nameEl.textContent=name;priceEl.textContent=card.dataset.price;
+  const message=hours==='0'?'Hola, me gustaría consultar qué opción de acompañamiento se adapta mejor a mis necesidades.':`Hola, me gustaría solicitar información sobre ${hours==='1'?'el servicio puntual de 1 hora':'el pack de acompañamiento de '+hours+' horas'}.`;
+  wa.href='https://wa.me/34624249294?text='+encodeURIComponent(message);
+  wa.setAttribute('aria-label','Consultar por WhatsApp sobre '+name);
+  book.href=hours==='0'?'./citas.html':'./citas.html?pack='+encodeURIComponent(hours);
+  book.setAttribute('aria-label','Solicitar cita para '+name);
+ }
+ cards.forEach(card=>{card.addEventListener('click',()=>select(card));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(card)}})});
+ if(cards.length)select(cards[0]);
+})();
+</script></body>
 </html>
-
