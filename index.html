@@ -530,11 +530,22 @@ main > section:has(.about-grid) {
 #inicio.hero{background-color:#fff;background-image:radial-gradient(circle 165px at -48px 82px,rgba(0,196,170,.31) 99%,transparent 100%);background-repeat:no-repeat}
 @media(max-width:600px){#inicio.hero{background-image:radial-gradient(circle 112px at -48px 62px,rgba(0,196,170,.28) 99%,transparent 100%)}}
 </style>
+
+<style id="revision-logo-cabecera">
+/* Marca única: el nombre y el lema forman parte del propio logotipo. */
+header .nav{min-height:136px;gap:24px}
+header .brand{min-width:0;flex:0 1 280px;align-self:center;gap:0;line-height:1}
+header .brand .logo{display:block;width:260px;max-width:100%;height:124px;object-fit:contain;object-position:left center;flex-shrink:1}
+header .navlinks{flex-shrink:0}
+@media(max-width:1100px){header .brand{flex-basis:230px}header .brand .logo{width:230px;height:116px}header .nav{min-height:128px;gap:18px}}
+@media(max-width:600px){header .nav{min-height:96px;gap:10px}header .brand{flex:1 1 auto;min-width:0}header .brand .logo{width:170px;max-width:100%;height:86px}header .mobile-nav-actions{flex-shrink:0}}
+@media(max-width:360px){header .nav{min-height:86px;gap:7px}header .brand .logo{width:145px;height:76px}}
+</style>
 </head>
 <body>
 <header>
 <div class="wrap nav">
-<a aria-label="Una mano en casa, inicio" class="brand" href="#inicio"><img alt="Logo Una Mano en Casa" class="logo" src="logo-una-mano.png"/><span>UNA MANO<br/>EN CASA<small>Ayuda sencilla para el día a día</small></span></a>
+<a aria-label="Una mano en casa, inicio" class="brand" href="#inicio"><img alt="Logo Una Mano en Casa" class="logo" src="logo-una-mano.png"/></a>
 <div class="mobile-nav-actions">
 <a aria-label="Solicitar cita" class="mobile-booking-cta" href="./citas.html">
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>
